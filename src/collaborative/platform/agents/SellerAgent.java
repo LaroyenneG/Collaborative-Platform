@@ -1,4 +1,6 @@
 package collaborative.platform.agents;
 
-public class SellerAgent {
+import jade.core.Agent;
+
+public class SellerAgent extends Agent {
 }

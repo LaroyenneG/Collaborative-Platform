@@ -1,4 +1,4 @@
-package collaborative.platform.container;
+package collaborative.platform.containers;
 
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;

@@ -1,6 +1,6 @@
 package collaborative.platform;
 
-import collaborative.platform.container.MainContainer;
+import collaborative.platform.containers.MainContainer;
 import jade.wrapper.ControllerException;
 
 import java.util.HashMap;

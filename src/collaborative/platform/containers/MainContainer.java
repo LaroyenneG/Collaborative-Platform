@@ -1,4 +1,4 @@
-package collaborative.platform.container;
+package collaborative.platform.containers;
 
 import jade.core.Profile;
 import jade.core.ProfileImpl;

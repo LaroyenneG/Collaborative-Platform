@@ -1,6 +1,7 @@
 package collaborative.platform.agents;
 
 
+import collaborative.platform.behaviors.CustomerCommercialProposalBehaviour;
 import collaborative.platform.gui.CustomerGUI;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
@@ -15,14 +16,18 @@ public class CustomerAgent extends GuiAgent {
     @Override
     protected void setup() {
         initGUI();
+        addBehaviour(new CustomerCommercialProposalBehaviour(this));
         System.out.println("Agent " + getAID().toString() + " started");
     }
 
     @Override
+    protected void takeDown() {
+        stopGUI();
+    }
+
+    @Override
     protected void beforeMove() {
-        customerGUI.setVisible(false);
-        customerGUI.dispose();
-        customerGUI = null;
+        stopGUI();
     }
 
     @Override
@@ -40,6 +45,10 @@ public class CustomerAgent extends GuiAgent {
         initGUI();
     }
 
+    @Override
+    protected void onGuiEvent(GuiEvent guiEvent) {
+
+    }
 
     private void initGUI() {
         try {
@@ -55,8 +64,9 @@ public class CustomerAgent extends GuiAgent {
         }
     }
 
-    @Override
-    protected void onGuiEvent(GuiEvent guiEvent) {
-
+    private void stopGUI() {
+        customerGUI.setVisible(false);
+        customerGUI.dispose();
+        customerGUI = null;
     }
 }

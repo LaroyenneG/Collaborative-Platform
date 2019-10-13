@@ -14,9 +14,8 @@ public class CustomerGUI extends JFrame {
     }
 
     private void initComponent() {
-        setTitle(customerAgent.getName());
+        setTitle(customerAgent.getLocalName());
         setSize(300, 300);
-        setVisible(true);
     }
 
     public CustomerAgent getCustomerAgent() {

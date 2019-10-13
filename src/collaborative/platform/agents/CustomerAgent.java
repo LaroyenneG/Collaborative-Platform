@@ -12,22 +12,47 @@ public class CustomerAgent extends GuiAgent {
 
     private transient CustomerGUI customerGUI;
 
-
-    private void createGUI() {
-        customerGUI = new CustomerGUI(this);
+    @Override
+    protected void setup() {
+        initGUI();
+        System.out.println("Agent " + getAID().toString() + " started");
     }
 
     @Override
-    protected void setup() {
+    protected void beforeMove() {
+        customerGUI.setVisible(false);
+        customerGUI.dispose();
+        customerGUI = null;
+    }
 
+    @Override
+    protected void afterMove() {
+        initGUI();
+    }
+
+    @Override
+    protected void beforeClone() {
+
+    }
+
+    @Override
+    protected void afterClone() {
+        initGUI();
+    }
+
+
+    private void initGUI() {
         try {
-            SwingUtilities.invokeAndWait(this::createGUI);
+            final CustomerAgent agent = this;
+
+            SwingUtilities.invokeAndWait(() -> {
+                customerGUI = new CustomerGUI(agent);
+                customerGUI.setVisible(true);
+            });
         } catch (InterruptedException | InvocationTargetException e) {
             customerGUI = null;
             e.printStackTrace();
         }
-
-        System.out.println("Agent " + getAID().toString() + " started");
     }
 
     @Override

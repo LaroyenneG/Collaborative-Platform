@@ -10,12 +10,9 @@ public class Delivery implements Serializable {
     private long time;
     private long price;
 
-    private AID from;
-
     public Delivery(long time, long price, AID from) {
         this.time = time;
         this.price = price;
-        this.from = from;
     }
 
     public Delivery(long time, long price, Agent agent) {
@@ -24,7 +21,7 @@ public class Delivery implements Serializable {
 
     @Override
     public String toString() {
-        return time + "s " + price + "$ from : " + from.toString();
+        return time + " s" + price;
     }
 
     public long getTime() {
@@ -41,13 +38,5 @@ public class Delivery implements Serializable {
 
     public void setPrice(long price) {
         this.price = price;
-    }
-
-    public AID getFrom() {
-        return from;
-    }
-
-    public void setFrom(AID from) {
-        this.from = from;
     }
 }

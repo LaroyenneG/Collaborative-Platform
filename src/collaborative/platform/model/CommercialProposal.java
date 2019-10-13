@@ -1,8 +1,5 @@
 package collaborative.platform.model;
 
-import jade.core.AID;
-import jade.core.Agent;
-
 import java.io.Serializable;
 
 public class CommercialProposal implements Serializable {
@@ -11,17 +8,11 @@ public class CommercialProposal implements Serializable {
 
     private long price;
 
-    private AID fromAID;
-
-    public CommercialProposal(Product product, long price, AID fromAID) {
+    public CommercialProposal(Product product, long price) {
         this.product = product;
         this.price = price;
-        this.fromAID = fromAID;
     }
 
-    public CommercialProposal(Product product, long price, Agent agent) {
-        this(product, price, agent.getAID());
-    }
 
     public Product getProduct() {
         return product;
@@ -37,17 +28,5 @@ public class CommercialProposal implements Serializable {
 
     public void setPrice(long price) {
         this.price = price;
-    }
-
-    public AID getFromAID() {
-        return fromAID;
-    }
-
-    public void setFromAID(Agent agent) {
-        fromAID = agent.getAID();
-    }
-
-    public void setAid(AID aid) {
-        this.fromAID = aid;
     }
 }

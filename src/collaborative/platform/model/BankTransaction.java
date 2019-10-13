@@ -6,32 +6,26 @@ import java.io.Serializable;
 
 public class BankTransaction implements Serializable {
 
-    private AID from;
-    private AID to;
+    private AID receiver;
 
     private long value;
 
-    public BankTransaction(AID from, AID to, long value) {
+    public BankTransaction(AID receiver, long value) {
         this.value = value;
-        this.from = from;
-        this.to = to;
+        this.receiver = receiver;
     }
 
     @Override
     public String toString() {
-        return from.toString() + "- " + value + " ->" + to.toString();
+        return value + " ->" + receiver.toString();
     }
 
-    public void setFrom(AID from) {
-        this.from = from;
+    public AID getReceiver() {
+        return receiver;
     }
 
-    public AID getTo() {
-        return to;
-    }
-
-    public void setTo(AID to) {
-        this.to = to;
+    public void setReceiver(AID receiver) {
+        this.receiver = receiver;
     }
 
     public long getValue() {

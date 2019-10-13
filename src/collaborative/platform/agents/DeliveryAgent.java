@@ -1,6 +1,11 @@
 package collaborative.platform.agents;
 
-import jade.core.Agent;
+import jade.gui.GuiAgent;
+import jade.gui.GuiEvent;
 
-public class DeliveryAgent extends Agent {
+public class DeliveryAgent extends GuiAgent {
+    @Override
+    protected void onGuiEvent(GuiEvent guiEvent) {
+
+    }
 }

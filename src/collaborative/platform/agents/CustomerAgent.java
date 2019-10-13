@@ -7,7 +7,7 @@ import jade.gui.GuiEvent;
 
 public class CustomerAgent extends GuiAgent {
 
-    private CustomerGUI customerGUI;
+    private transient CustomerGUI customerGUI;
 
     @Override
     protected void setup() {

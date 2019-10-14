@@ -26,7 +26,7 @@ public class CustomerGUI extends JFrame {
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 try {
-                    g.drawImage(ImageIO.read(new URL("https://media.licdn.com/dms/image/C4D03AQEPcYWTlHKSSA/profile-displayphoto-shrink_800_800/0?e=1576713600&v=beta&t=-19dMEZXWhxKvhVgtN4mlQW2bNmD92xK71H7J9B7rBM")), 0, 0, null);
+                    g.drawImage(ImageIO.read(new URL("http://lorempixel.com/400/200/nature/")), 0, 0, null);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

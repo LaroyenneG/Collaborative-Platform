@@ -1,5 +1,6 @@
 package collaborative.platform.agents;
 
+import collaborative.platform.behaviors.DeliveryProposalBehavior;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -10,6 +11,8 @@ public class DeliveryAgent extends Agent {
     @Override
     protected void setup() {
         try {
+            addBehaviour(new DeliveryProposalBehavior(this));
+
             DFAgentDescription dfAgentDescription = new DFAgentDescription();
             dfAgentDescription.setName(this.getAID());
 

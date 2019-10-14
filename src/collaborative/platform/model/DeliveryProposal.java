@@ -1,22 +1,21 @@
 package collaborative.platform.model;
 
-import jade.core.AID;
 import jade.core.Agent;
 
 import java.io.Serializable;
 
-public class Delivery implements Serializable {
+public class DeliveryProposal implements Serializable {
 
     private long time;
     private long price;
 
-    public Delivery(long time, long price, AID from) {
+    public DeliveryProposal(long time, long price) {
         this.time = time;
         this.price = price;
     }
 
-    public Delivery(long time, long price, Agent agent) {
-        this(time, price, agent.getAID());
+    public DeliveryProposal(long time, long price, Agent agent) {
+        this(time, price);
     }
 
     @Override

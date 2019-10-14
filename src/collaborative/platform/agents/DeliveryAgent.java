@@ -24,4 +24,13 @@ public class DeliveryAgent extends Agent {
             e.printStackTrace();
         }
     }
+
+    @Override
+    protected void takeDown() {
+        try {
+            DFService.deregister(this);
+        } catch (FIPAException e) {
+            e.printStackTrace();
+        }
+    }
 }

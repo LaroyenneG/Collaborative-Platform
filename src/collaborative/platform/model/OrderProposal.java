@@ -1,4 +1,4 @@
-package collaborative.platform.model.products;
+package collaborative.platform.model;
 
 import java.io.Serializable;
 

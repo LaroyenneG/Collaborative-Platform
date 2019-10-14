@@ -1,11 +1,7 @@
 package collaborative.platform.agents;
 
-import jade.gui.GuiAgent;
-import jade.gui.GuiEvent;
+import jade.core.Agent;
 
-public class SellerAgent extends GuiAgent {
-    @Override
-    protected void onGuiEvent(GuiEvent guiEvent) {
+public class SellerAgent extends Agent {
 
-    }
 }

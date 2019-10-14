@@ -1,18 +1,49 @@
 package collaborative.platform.model;
 
+import collaborative.platform.model.products.*;
+
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public abstract class Product implements Serializable {
 
-    private long id;
+    private int id;
 
     private String name;
     private String description;
 
-    public Product(long id, String name) {
+    public Product(int id, String name) {
         this.id = id;
         this.name = name;
         description = "";
+    }
+
+    public static Set<Product> productList() {
+
+        Set<Product> productSet = new HashSet<>();
+
+        productSet.add(new Apple());
+        productSet.add(new Banana());
+        productSet.add(new Lemon());
+        productSet.add(new Peach());
+        productSet.add(new Pineapple());
+        productSet.add(new Raspberry());
+
+        return productSet;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        boolean state = false;
+
+        if (obj instanceof Product) {
+            Product product = (Product) obj;
+            state = product.id == id;
+        }
+
+        return state;
     }
 
     @Override
@@ -28,12 +59,13 @@ public abstract class Product implements Serializable {
         this.name = name;
     }
 
-    public long getId() {
+    @Override
+    public int hashCode() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public String getDescription() {
@@ -42,5 +74,9 @@ public abstract class Product implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

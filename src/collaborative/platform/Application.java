@@ -9,11 +9,14 @@ import collaborative.platform.containers.MainContainer;
 import collaborative.platform.containers.SimpleContainer;
 import jade.wrapper.ControllerException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Application {
 
-    private static final String DEFAULT_HOSTNAME = "hostname";
+    private static final String DEFAULT_HOSTNAME = "localhost";
 
     private static final Map<String, String> mainContainerAgents = new HashMap<>();
     private static final Map<String, String> bankContainerAgents = new HashMap<>();
@@ -53,6 +56,11 @@ public class Application {
     }
 
     public static void main(String[] args) {
+
+        if (args.length != 0) {
+            usage();
+        }
+
         List<Container> containerList = new ArrayList<>();
 
         containerList.add(new MainContainer(mainContainerAgents));

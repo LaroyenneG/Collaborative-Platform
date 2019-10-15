@@ -22,7 +22,7 @@ public class BankTicket implements Serializable {
 
     @Override
     public String toString() {
-        return debtor.getLocalName() + "<- " + value + " ->" + credit.getLocalName() + " state : " + state;
+        return debtor.getLocalName() + " <- " + value + " -> " + credit.getLocalName() + " state : " + state;
     }
 
     public AID getCredit() {
@@ -49,7 +49,7 @@ public class BankTicket implements Serializable {
         this.value = value;
     }
 
-    public boolean isState() {
+    public boolean isSucess() {
         return state;
     }
 

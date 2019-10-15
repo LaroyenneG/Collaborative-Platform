@@ -7,7 +7,7 @@ import jade.lang.acl.MessageTemplate;
 
 public class CustomerTrashMessageBehaviour extends CyclicBehaviour {
 
-    public static final MessageTemplate MESSAGE_TEMPLATE = MessageTemplate.not(CustomerOfferProposalBehaviour.MESSAGE_TEMPLATE);
+    public static final MessageTemplate MESSAGE_TEMPLATE = MessageTemplate.not(MessageTemplate.and(CustomerOfferBehaviour.MESSAGE_TEMPLATE, CustomerTransactionReplyBehaviour.MESSAGE_TEMPLATE));
 
     public CustomerTrashMessageBehaviour(CustomerAgent customerAgent) {
         super(customerAgent);
@@ -23,7 +23,11 @@ public class CustomerTrashMessageBehaviour extends CyclicBehaviour {
 
         ACLMessage aclMessage = myAgent.receive(MESSAGE_TEMPLATE);
         if (aclMessage != null) {
-            getCustomerAgent().getCustomerGUI().printLog("Invalid Message :\n" + aclMessage.toString());
+            getCustomerAgent().getCustomerGUI().printLog(
+                    "------------------------------\n" +
+                            "      Attention !!\n"
+                            + "-------------------------------\n" +
+                            "Invalid message (no template matching) : \n" + aclMessage.toString());
         } else {
             block();
         }

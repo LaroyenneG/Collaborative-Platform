@@ -4,20 +4,17 @@ import collaborative.platform.agents.CustomerAgent;
 import collaborative.platform.agents.Protocol;
 import collaborative.platform.gui.CustomerGUI;
 import collaborative.platform.model.OrderProposal;
-import jade.core.behaviours.Behaviour;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 import jade.lang.acl.UnreadableException;
 
-public class CustomerOfferProposalBehaviour extends Behaviour {
+public class CustomerOfferBehaviour extends CyclicBehaviour {
 
     public static final MessageTemplate MESSAGE_TEMPLATE = MessageTemplate.and(MessageTemplate.MatchOntology(Protocol.ONTOLOGY), MessageTemplate.MatchProtocol(Protocol.CUSTOMER_OFFER));
 
-    private boolean processing;
-
-    public CustomerOfferProposalBehaviour(CustomerAgent customerAgent) {
+    public CustomerOfferBehaviour(CustomerAgent customerAgent) {
         super(customerAgent);
-        processing = true;
     }
 
     public CustomerAgent getCustomerAgent() {
@@ -35,22 +32,18 @@ public class CustomerOfferProposalBehaviour extends Behaviour {
     }
 
     private void messageProcessing(ACLMessage aclMessage) {
+
+        CustomerAgent customerAgent = getCustomerAgent();
+        CustomerGUI customerGUI = customerAgent.getCustomerGUI();
+
         try {
             OrderProposal orderProposal = (OrderProposal) aclMessage.getContentObject();
-
-            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
-            customerGUI.setOrderProposal(orderProposal);
-            customerGUI.unlockDecisionButtons();
-
-            processing = false;
-
+            orderProposal.setFrom(aclMessage.getSender());
+            customerAgent.setOrderProposal(orderProposal);
+            customerGUI.actualise();
         } catch (UnreadableException e) {
             e.printStackTrace();
+            customerGUI.printLog("Order proposal error");
         }
-    }
-
-    @Override
-    public boolean done() {
-        return !processing;
     }
 }

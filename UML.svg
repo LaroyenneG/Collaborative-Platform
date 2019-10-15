@@ -1,1 +1,296 @@
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="882" height="616"><defs/><g><g/><g/><g/><g/><g/><g/><g/><g/><g/><g><rect fill="white" stroke="none" x="0" y="0" width="882" height="616"/></g><g><text fill="black" stroke="none" font-family="sans-serif" font-size="16.5pt" font-style="normal" font-weight="normal" text-decoration="normal" x="326.9654727502253" y="24.50280495" text-anchor="start" dominant-baseline="alphabetic">Collaborative Plateform</text></g><g/><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 57.65485466458204 95.887643371 L 57.65485466458204 616.9806286409998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 243.49115363385286 95.887643371 L 243.49115363385286 616.9806286409998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 602.3041982085924 95.887643371 L 602.3041982085924 616.9806286409998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 732.009716467642 95.887643371 L 732.009716467642 616.9806286409998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 833.4790022128217 95.887643371 L 833.4790022128217 616.9806286409998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="12.565541,5.445067766666667"/></g><g><path fill="none" stroke="none"/><g><path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 8.167601650000002 51.782594461 L 107.14210767916407 51.782594461 L 107.14210767916407 95.887643371 L 8.167601650000002 95.887643371 L 8.167601650000002 51.782594461 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/></g><g><g/><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="25.891297230500008" y="79.55244007099999" text-anchor="start" dominant-baseline="alphabetic">Customer</text></g><path fill="none" stroke="none"/><g><path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 206.62416276526693 51.782594461 L 280.3581445024388 51.782594461 L 280.3581445024388 95.887643371 L 206.62416276526693 95.887643371 L 206.62416276526693 51.782594461 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/></g><g><g/><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="224.34785834576692" y="79.55244007099999" text-anchor="start" dominant-baseline="alphabetic">Buyer</text></g><path fill="none" stroke="none"/><g><path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 565.8451205480143 51.782594461 L 638.7632758691706 51.782594461 L 638.7632758691706 95.887643371 L 565.8451205480143 95.887643371 L 565.8451205480143 51.782594461 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/></g><g><g/><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="583.5688161285143" y="79.55244007099999" text-anchor="start" dominant-baseline="alphabetic">Seller</text></g><path fill="none" stroke="none"/><g><path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 687.8181787850912 51.782594461 L 776.2012541501928 51.782594461 L 776.2012541501928 95.887643371 L 687.8181787850912 95.887643371 L 687.8181787850912 51.782594461 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/></g><g><g/><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="705.5418743655912" y="79.55244007099999" text-anchor="start" dominant-baseline="alphabetic">Delivery</text></g><path fill="none" stroke="none"/><g><path fill="white" stroke="black" paint-order="fill stroke markers" d=" M 792.5364574501928 51.782594461 L 874.4215469754506 51.782594461 L 874.4215469754506 95.887643371 L 792.5364574501928 95.887643371 L 792.5364574501928 51.782594461 Z" stroke-miterlimit="10" stroke-width="2.613632528" stroke-dasharray=""/></g><g><g/><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="810.2601530306928" y="79.55244007099999" text-anchor="start" dominant-baseline="alphabetic">Banker</text></g></g><g><g><g><rect fill="white" stroke="none" x="77.6575060638854" y="133.458610961" width="145.83099617066406" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="80.10778655888541" y="148.16029393099998" text-anchor="start" dominant-baseline="alphabetic">buy(product: Product)</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 57.65485466458204 154.694375251 L 240.76861975051952 154.694375251" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(243.49115363385286,154.694375251) translate(-243.49115363385286,-154.694375251)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 229.87848421718618 147.88804054266666 L 243.49115363385286 154.694375251 L 229.87848421718618 161.50070995933334 Z"/></g></g><g><g><rect fill="white" stroke="none" x="262.82114420551954" y="184.09774119099998" width="320.1530634314062" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="265.27142470051956" y="198.79942416099996" text-anchor="start" dominant-baseline="alphabetic">requestPrice(product: Product) à tous les Sellers</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 243.49115363385286 205.33350548099997 L 599.5816643252591 205.33350548099997" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(602.3041982085924,205.33350548099997) translate(-602.3041982085924,-205.33350548099997)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 588.6915287919257 198.52717077266664 L 602.3041982085924 205.33350548099997 L 588.6915287919257 212.1398401893333 Z"/></g></g><g><g><rect fill="white" stroke="none" x="328.95321665425" y="234.73687142099996" width="187.88891853394531" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="331.40349714925003" y="249.43855439099994" text-anchor="start" dominant-baseline="alphabetic">offer(): CommercialProposal</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 602.3041982085924 255.97263571099995 L 246.2136875171862 255.97263571099995" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="6.53408132"/><g transform="translate(243.49115363385286,255.97263571099995) translate(-243.49115363385286,-255.97263571099995)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 257.1038230505195 249.16630100266661 L 243.49115363385286 255.97263571099995 L 257.1038230505195 262.7789704193333 Z"/></g></g><g><g><rect fill="white" stroke="none" x="377.3749073633646" y="285.3760016509999" width="220.75105537476563" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="379.82518785836464" y="300.0776846209999" text-anchor="start" dominant-baseline="alphabetic">requestPrice() à tous les Delivery</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 243.49115363385286 306.61176594099993 L 729.2871825843087 306.61176594099993" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(732.009716467642,306.61176594099993) translate(-732.009716467642,-306.61176594099993)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 718.3970470509753 299.8054312326666 L 732.009716467642 306.61176594099993 L 718.3970470509753 313.41810064933327 Z"/></g></g><g><g><rect fill="white" stroke="none" x="406.4262379297709" y="336.0151318809999" width="162.64839424195313" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="408.8765184247709" y="350.71681485099987" text-anchor="start" dominant-baseline="alphabetic">offer(): DeliveryProposal</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 732.009716467642 357.2508961709999 L 246.2136875171862 357.2508961709999" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray="6.53408132"/><g transform="translate(243.49115363385286,357.2508961709999) translate(-243.49115363385286,-357.2508961709999)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 257.1038230505195 350.44456146266657 L 243.49115363385286 357.2508961709999 L 257.1038230505195 364.05723087933325 Z"/></g></g><g><g><rect fill="white" stroke="none" x="76.98484523624869" y="386.65426211099987" width="147.1763178259375" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="79.43512573124869" y="401.35594508099985" text-anchor="start" dominant-baseline="alphabetic">offer(): OrderProposal</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 243.49115363385286 407.8900264009999 L 60.37738854791537 407.8900264009999" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(57.65485466458204,407.8900264009999) translate(-57.65485466458204,-407.8900264009999)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 71.26752408124871 401.08369169266655 L 57.65485466458204 407.8900264009999 L 71.26752408124871 414.6963611093332 Z"/></g></g><g><g><rect fill="white" stroke="none" x="294.1819555608894" y="437.29339234099984" width="302.769945755625" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="296.6322360558894" y="451.9950753109998" text-anchor="start" dominant-baseline="alphabetic">askTransaction(transaction: BankTransaction)</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 57.65485466458204 458.52915663099986 L 830.7564683294884 458.52915663099986" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(833.4790022128217,458.52915663099986) translate(-833.4790022128217,-458.52915663099986)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 819.866332796155 451.7228219226665 L 833.4790022128217 458.52915663099986 L 819.866332796155 465.3354913393332 Z"/></g></g><g><g><rect fill="white" stroke="none" x="476.5725018961107" y="487.9325225709998" width="123.82515205445313" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="479.0227823911107" y="502.6342055409998" text-anchor="start" dominant-baseline="alphabetic">transactionReply()</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 833.4790022128217 509.16828686099984 L 246.2136875171862 509.16828686099984" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(243.49115363385286,509.16828686099984) translate(-243.49115363385286,-509.16828686099984)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 257.1038230505195 502.3619521526665 L 243.49115363385286 509.16828686099984 L 257.1038230505195 515.9746215693332 Z"/></g></g><g><g><rect fill="white" stroke="none" x="92.74313838810416" y="538.5716528009998" width="115.65973152222656" height="21.23576429"/></g><text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal" font-weight="normal" text-decoration="normal" x="95.19341888310416" y="553.2733357709998" text-anchor="start" dominant-baseline="alphabetic">accept() / reject()</text></g><g><path fill="none" stroke="black" paint-order="fill stroke markers" d=" M 243.49115363385286 559.8074170909998 L 60.37738854791537 559.8074170909998" stroke-miterlimit="10" stroke-width="1.3612669416666667" stroke-dasharray=""/><g transform="translate(57.65485466458204,559.8074170909998) translate(-57.65485466458204,-559.8074170909998)"><path fill="black" stroke="none" paint-order="stroke fill markers" d=" M 71.26752408124871 553.0010823826665 L 57.65485466458204 559.8074170909998 L 71.26752408124871 566.6137517993332 Z"/></g></g></g><g/><g/><g/><g/><g/></g></svg>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="937" height="569">
+    <defs/>
+    <g>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g>
+            <rect fill="white" stroke="none" x="0" y="0" width="937" height="569"/>
+        </g>
+        <g>
+            <text fill="black" stroke="none" font-family="sans-serif" font-size="16.5pt" font-style="normal"
+                  font-weight="normal" text-decoration="normal" x="354.2409825438339" y="22.6179738" text-anchor="start"
+                  dominant-baseline="alphabetic">Collaborative Plateform
+            </text>
+        </g>
+        <g/>
+        <g>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 55.66321641608203 88.511670804 L 55.66321641608203 569.5205802840001" stroke-miterlimit="10"
+                  stroke-width="1.2565541" stroke-dasharray="11.598960923076923,5.0262164"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 238.14870445201953 88.511670804 L 238.14870445201953 569.5205802840001" stroke-miterlimit="10"
+                  stroke-width="1.2565541" stroke-dasharray="11.598960923076923,5.0262164"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 638.4312963697929 88.511670804 L 638.4312963697929 569.5205802840001" stroke-miterlimit="10"
+                  stroke-width="1.2565541" stroke-dasharray="11.598960923076923,5.0262164"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 792.5356508003592 88.511670804 L 792.5356508003592 569.5205802840001" stroke-miterlimit="10"
+                  stroke-width="1.2565541" stroke-dasharray="11.598960923076923,5.0262164"/>
+            <path fill="none" stroke="black" paint-order="fill stroke markers"
+                  d=" M 890.0216600485389 88.511670804 L 890.0216600485389 569.5205802840001" stroke-miterlimit="10"
+                  stroke-width="1.2565541" stroke-dasharray="11.598960923076923,5.0262164"/>
+        </g>
+        <g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 7.5393246000000005 47.799317964000004 L 103.78710823216406 47.799317964000004 L 103.78710823216406 88.511670804 L 7.5393246000000005 88.511670804 L 7.5393246000000005 47.799317964000004 Z"
+                      stroke-miterlimit="10" stroke-width="2.4125838720000004" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="23.899658982" y="73.43302160400002"
+                      text-anchor="start" dominant-baseline="alphabetic">Customer
+                </text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 202.6450747819336 47.799317964000004 L 273.65233412210546 47.799317964000004 L 273.65233412210546 88.511670804 L 202.6450747819336 88.511670804 L 202.6450747819336 47.799317964000004 Z"
+                      stroke-miterlimit="10" stroke-width="2.4125838720000004" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="219.0054091639336" y="73.43302160400002"
+                      text-anchor="start" dominant-baseline="alphabetic">Buyer
+                </text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 603.3355799077148 47.799317964000004 L 673.527012831871 47.799317964000004 L 673.527012831871 88.511670804 L 603.3355799077148 88.511670804 L 603.3355799077148 47.799317964000004 Z"
+                      stroke-miterlimit="10" stroke-width="2.4125838720000004" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="619.6959142897148" y="73.43302160400002"
+                      text-anchor="start" dominant-baseline="alphabetic">Seller
+                </text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 749.7074743163084 47.799317964000004 L 835.36382728441 47.799317964000004 L 835.36382728441 88.511670804 L 749.7074743163084 88.511670804 L 749.7074743163084 47.799317964000004 Z"
+                      stroke-miterlimit="10" stroke-width="2.4125838720000004" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="766.0678086983085" y="73.43302160400002"
+                      text-anchor="start" dominant-baseline="alphabetic">Delivery
+                </text>
+            </g>
+            <path fill="none" stroke="none"/>
+            <g>
+                <path fill="white" stroke="black" paint-order="fill stroke markers"
+                      d=" M 850.44247648441 47.799317964000004 L 929.6008436126679 47.799317964000004 L 929.6008436126679 88.511670804 L 850.44247648441 88.511670804 L 850.44247648441 47.799317964000004 Z"
+                      stroke-miterlimit="10" stroke-width="2.4125838720000004" stroke-dasharray=""/>
+            </g>
+            <g>
+                <g/>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="866.80281086641" y="73.43302160400002"
+                      text-anchor="start" dominant-baseline="alphabetic">Banker
+                </text>
+            </g>
+        </g>
+        <g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="74.17894546371873" y="123.19256396399999"
+                          width="145.45402994066407" height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="76.44074284371874" y="136.76334824399999"
+                      text-anchor="start" dominant-baseline="alphabetic">buy(product: Product)
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 55.66321641608203 142.794807924 L 235.63559625201952 142.794807924" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(238.14870445201953,142.794807924) translate(-238.14870445201953,-142.794807924)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 225.58316345201953 136.512037424 L 238.14870445201953 142.794807924 L 225.58316345201953 149.077578424 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="255.99177267201955" y="169.936376484" width="364.5964554777734"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="258.25357005201954" y="183.507160764"
+                      text-anchor="start" dominant-baseline="alphabetic">requestPrice(product: Product) 
+                </text>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="italic"
+                      font-weight="normal" text-decoration="normal" x="461.90245005690235" y="183.507160764"
+                      text-anchor="start" dominant-baseline="alphabetic"> à tous les agent Sellers
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 238.14870445201953 189.538620444 L 635.9181881697929 189.538620444" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(638.4312963697929,189.538620444) translate(-638.4312963697929,-189.538620444)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 625.8657553697929 183.255849944 L 638.4312963697929 189.538620444 L 625.8657553697929 195.821390944 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="344.5340242589336" y="216.680189004" width="187.51195230394532"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="346.7958216389336" y="230.250973284"
+                      text-anchor="start" dominant-baseline="alphabetic">offer(): CommercialProposal
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 638.4312963697929 236.282432964 L 240.66181265201953 236.282432964" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(238.14870445201953,236.282432964) translate(-238.14870445201953,-236.282432964)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 250.71424545201953 229.999662464 L 238.14870445201953 236.282432964 L 250.71424545201953 242.565203464 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="379.08089141562294" y="263.424001524" width="272.5225724211328"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="381.34268879562296" y="276.994785804"
+                      text-anchor="start" dominant-baseline="alphabetic">requestPrice() 
+                </text>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="italic"
+                      font-weight="normal" text-decoration="normal" x="477.45276569991984" y="276.994785804"
+                      text-anchor="start" dominant-baseline="alphabetic"> à tous les agents Delivery
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 238.14870445201953 283.026245484 L 790.0225426003592 283.026245484" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(792.5356508003592,283.026245484) translate(-792.5356508003592,-283.026245484)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 779.9701098003592 276.743474984 L 792.5356508003592 283.026245484 L 779.9701098003592 289.30901598400004 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="434.2064636202128" y="310.167814044" width="162.27142801195313"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="436.4682610002128" y="323.738598324"
+                      text-anchor="start" dominant-baseline="alphabetic">offer(): DeliveryProposal
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 792.5356508003592 329.770058004 L 240.66181265201953 329.770058004" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(238.14870445201953,329.770058004) translate(-238.14870445201953,-329.770058004)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 250.71424545201953 323.487287504 L 238.14870445201953 329.770058004 L 250.71424545201953 336.05282850400005 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="73.50628463608201" y="356.911626564" width="146.7993515959375"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="75.76808201608202" y="370.482410844"
+                      text-anchor="start" dominant-baseline="alphabetic">offer(): OrderProposal
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 238.14870445201953 376.513870524 L 58.17632461608203 376.513870524" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(55.66321641608203,376.513870524) translate(-55.66321641608203,-376.513870524)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 68.22875741608203 370.231100024 L 55.66321641608203 376.513870524 L 68.22875741608203 382.79664102400005 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="321.64594846949797" y="403.655439084" width="302.392979525625"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="323.907745849498" y="417.226223364"
+                      text-anchor="start" dominant-baseline="alphabetic">askTransaction(transaction: BankTransaction)
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 55.66321641608203 423.25768304400003 L 887.5085518485389 423.25768304400003"
+                      stroke-miterlimit="10" stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(890.0216600485389,423.25768304400003) translate(-890.0216600485389,-423.25768304400003)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 877.4561190485389 416.974912544 L 890.0216600485389 423.25768304400003 L 877.4561190485389 429.54045354400006 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="445.2103782784823" y="450.399251604" width="237.74960794359376"
+                          height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="447.47217565848234" y="463.970035884"
+                      text-anchor="start" dominant-baseline="alphabetic">transactionReply(ticket: BankTicket)
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 890.0216600485389 470.00149556400004 L 240.66181265201953 470.00149556400004"
+                      stroke-miterlimit="10" stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(238.14870445201953,470.00149556400004) translate(-238.14870445201953,-470.00149556400004)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 250.71424545201953 463.718725064 L 238.14870445201953 470.00149556400004 L 250.71424545201953 476.28426606400006 Z"/>
+                </g>
+            </g>
+            <g>
+                <g>
+                    <rect fill="white" stroke="none" x="353.9676342605136" y="497.14306412400003"
+                          width="237.74960794359376" height="19.602243960000003"/>
+                </g>
+                <text fill="black" stroke="none" font-family="sans-serif" font-size="11pt" font-style="normal"
+                      font-weight="normal" text-decoration="normal" x="356.2294316405136" y="510.71384840400003"
+                      text-anchor="start" dominant-baseline="alphabetic">transactionReply(ticket: BankTicket)
+                </text>
+            </g>
+            <g>
+                <path fill="none" stroke="black" paint-order="fill stroke markers"
+                      d=" M 890.0216600485389 516.745308084 L 58.17632461608203 516.745308084" stroke-miterlimit="10"
+                      stroke-width="1.2565541" stroke-dasharray=""/>
+                <g transform="translate(55.66321641608203,516.745308084) translate(-55.66321641608203,-516.745308084)">
+                    <path fill="black" stroke="none" paint-order="stroke fill markers"
+                          d=" M 68.22875741608203 510.462537584 L 55.66321641608203 516.745308084 L 68.22875741608203 523.028078584 Z"/>
+                </g>
+            </g>
+        </g>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+        <g/>
+    </g>
+</svg>

@@ -41,6 +41,7 @@ public class CustomerTransactionReplyBehaviour extends CyclicBehaviour {
             BankTicket bankTicket = (BankTicket) aclMessage.getContentObject();
             customerGUI.informBankTicket(bankTicket);
             customerGUI.actualise();
+            customerGUI.printLog("Bank ticket :\n" + bankTicket.toString());
         } catch (UnreadableException e) {
             e.printStackTrace();
             customerGUI.printLog("Bank ticket error");

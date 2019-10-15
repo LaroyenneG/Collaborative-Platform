@@ -41,42 +41,36 @@ public class CustomerAskTransactionBehaviour extends OneShotBehaviour {
         dfAgentDescription.addServices(serviceDescription);
         dfAgentDescription.addOntologies(Protocol.ONTOLOGY);
 
-        try {
-            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
+        CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
 
+        try {
             DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
 
             if (result.length > 0) {
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
                 AID aid = randomAgentDescription.getName();
                 sendTransactionMessage(aid);
+                customerGUI.printLog("Send bank request to : " + aid.getLocalName());
             } else {
                 customerGUI.printLog("Cannot find a bank agent");
             }
-        } catch (FIPAException e) {
+        } catch (FIPAException | IOException e) {
             e.printStackTrace();
+            customerGUI.printLog("Cannot send message to bank agent");
         }
-
     }
 
 
-    private void sendTransactionMessage(AID aid) {
+    private void sendTransactionMessage(AID aid) throws IOException {
 
-        try {
-            ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
 
-            message.setOntology(Protocol.ONTOLOGY);
-            message.setProtocol(Protocol.BANKER_ASK_TRANSACTION);
-            message.setContentObject(bankTransaction);
-            message.addReceiver(aid);
+        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
 
-            myAgent.send(message);
+        message.setOntology(Protocol.ONTOLOGY);
+        message.setProtocol(Protocol.BANKER_ASK_TRANSACTION);
+        message.setContentObject(bankTransaction);
+        message.addReceiver(aid);
 
-            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
-            customerGUI.printLog("Send request to : " + aid.getLocalName());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        myAgent.send(message);
     }
 }

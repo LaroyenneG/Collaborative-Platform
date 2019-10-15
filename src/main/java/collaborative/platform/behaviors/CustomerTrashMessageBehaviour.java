@@ -23,7 +23,11 @@ public class CustomerTrashMessageBehaviour extends CyclicBehaviour {
 
         ACLMessage aclMessage = myAgent.receive(MESSAGE_TEMPLATE);
         if (aclMessage != null) {
-            getCustomerAgent().getCustomerGUI().printLog("Invalid Message :\n" + aclMessage.toString());
+            getCustomerAgent().getCustomerGUI().printLog(
+                    "------------------------------\n" +
+                            "      Attention !!\n"
+                            + "-------------------------------\n" +
+                            "Invalid message (no template matching) : \n" + aclMessage.toString());
         } else {
             block();
         }

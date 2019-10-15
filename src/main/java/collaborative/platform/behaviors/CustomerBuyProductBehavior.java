@@ -40,8 +40,9 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
         DFAgentDescription dfAgentDescription = new DFAgentDescription();
         dfAgentDescription.addServices(serviceDescription);
 
+        CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
+
         try {
-            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
 
             DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
 
@@ -49,32 +50,26 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
                 AID aid = randomAgentDescription.getName();
                 sendBuyerBuyMessage(aid);
+                customerGUI.printLog("Send price request to : " + aid.getLocalName());
             } else {
                 customerGUI.printLog("Cannot find a buyer agent");
             }
-        } catch (FIPAException e) {
+
+        } catch (FIPAException | IOException e) {
             e.printStackTrace();
+            customerGUI.printLog("Cannot send a message to buyer agent");
         }
     }
 
-    private void sendBuyerBuyMessage(AID aid) {
+    private void sendBuyerBuyMessage(AID aid) throws IOException {
 
-        try {
-            ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+        ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
 
-            message.setOntology(Protocol.ONTOLOGY);
-            message.setProtocol(Protocol.BUYER_BUY);
-            message.setContentObject(product);
-            message.addReceiver(aid);
+        message.setOntology(Protocol.ONTOLOGY);
+        message.setProtocol(Protocol.BUYER_BUY);
+        message.setContentObject(product);
+        message.addReceiver(aid);
 
-            myAgent.send(message);
-
-            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
-
-            customerGUI.printLog("Send request to : " + aid.getLocalName());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        myAgent.send(message);
     }
 }

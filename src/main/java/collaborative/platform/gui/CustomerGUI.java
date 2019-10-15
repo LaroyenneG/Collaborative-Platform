@@ -8,8 +8,6 @@ import jade.wrapper.ControllerException;
 import javax.swing.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -293,20 +291,12 @@ public class CustomerGUI extends JFrame {
         int index = productsComboBox.getSelectedIndex();
 
         if (index > 0) {
-
             String key = productsComboBox.getItemAt(index);
 
             Product product = stringProductMap.getOrDefault(key, null);
 
             if (product != null) {
-                ImageIcon imageIcon = null;
-                try {
-                    imageIcon = new ImageIcon(new URL("https://avatars0.githubusercontent.com/u/19565477?s=460&v=4"));
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
-
-                JOptionPane.showMessageDialog(this, product.getDescription(), "Product information", JOptionPane.INFORMATION_MESSAGE, imageIcon);
+                JOptionPane.showMessageDialog(this, product.getDescription(), "Product information", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }

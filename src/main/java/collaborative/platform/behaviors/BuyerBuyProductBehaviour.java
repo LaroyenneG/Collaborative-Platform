@@ -5,6 +5,7 @@ import collaborative.platform.model.CommercialProposal;
 import collaborative.platform.model.DeliveryProposal;
 import collaborative.platform.model.OrderProposal;
 import collaborative.platform.model.Product;
+import collaborative.platform.model.products.Apple;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -149,12 +150,12 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
             Map.Entry<Integer, List<CommercialProposal>> cp = cpIt.next();
             List<DeliveryProposal> deliveryProposals = deliveryProposal.get(cp.getKey());
 
-            // Si tous les Sellers et tous les Delivery ont répondu
-            if(cp.getValue().size() == 3 && deliveryProposals.size() == 3){
-                CommercialProposal bestCP = Collections.min(cp.getValue(), (cp1, cp2) -> (int)(cp1.getPrice() - cp2.getPrice()));
-                DeliveryProposal bestDP = Collections.min(deliveryProposals, (dp1, dp2) -> (int)(dp1.getPrice() - dp2.getPrice()));
+            try {
+                // Si tous les Sellers et tous les Delivery ont répondu
+                if(cp.getValue().size() == getAllService(Protocol.SERVICE_SELLER).length && deliveryProposals.size() == getAllService(Protocol.SERVICE_DELIVERY).length){
+                    CommercialProposal bestCP = Collections.min(cp.getValue(), (cp1, cp2) -> (int)(cp1.getPrice() - cp2.getPrice()));
+                    DeliveryProposal bestDP = Collections.min(deliveryProposals, (dp1, dp2) -> (int)(dp1.getPrice() - dp2.getPrice()));
 
-                try {
                     // Envoyer la meilleure proposition au client
                     OrderProposal op = new OrderProposal(bestCP.getProduct(), bestCP.getPrice() + bestDP.getPrice());
                     sendOfferToCustomer(op, customers.get(cp.getKey()));
@@ -163,9 +164,9 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
                     deliveryProposal.remove(cp.getKey());
                     customers.remove(cp.getKey());
                     cpIt.remove();
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
+            } catch (FIPAException | IOException e) {
+                e.printStackTrace();
             }
         }
     }

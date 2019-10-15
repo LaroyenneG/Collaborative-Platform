@@ -1,8 +1,10 @@
 package collaborative.platform.agents;
 
 
+import collaborative.platform.behaviors.CustomerBuyProductBehavior;
 import collaborative.platform.behaviors.CustomerCommercialProposalBehaviour;
 import collaborative.platform.gui.CustomerGUI;
+import collaborative.platform.model.Product;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 
@@ -17,11 +19,12 @@ public class CustomerAgent extends GuiAgent {
     protected void setup() {
         initGUI();
         addBehaviour(new CustomerCommercialProposalBehaviour(this));
-        System.out.println("Agent " + getAID().toString() + " started");
+        customerGUI.printLog("Agent " + getAID().toString() + " started");
     }
 
     @Override
     protected void takeDown() {
+        customerGUI.printLog("Agent " + getAID().toString() + " end");
         stopGUI();
     }
 
@@ -48,6 +51,25 @@ public class CustomerAgent extends GuiAgent {
     @Override
     protected void onGuiEvent(GuiEvent guiEvent) {
 
+        switch (guiEvent.getType()) {
+
+            case CustomerGUI.EXIT_FRAME_CODE:
+                doDelete();
+                break;
+
+            case CustomerGUI.STOP_FRAME_CODE:
+                doDelete();
+                break;
+
+            case CustomerGUI.BUY_FRAME_CODE:
+                Product product = (Product) guiEvent.getParameter(0);
+                addBehaviour(new CustomerBuyProductBehavior(this, product));
+                addBehaviour(new CustomerCommercialProposalBehaviour(this));
+                break;
+
+            default:
+                throw new IllegalStateException("Invalid GUI event");
+        }
     }
 
     private void initGUI() {
@@ -68,5 +90,9 @@ public class CustomerAgent extends GuiAgent {
         customerGUI.setVisible(false);
         customerGUI.dispose();
         customerGUI = null;
+    }
+
+    public CustomerGUI getCustomerGUI() {
+        return customerGUI;
     }
 }

@@ -1,7 +1,6 @@
 package collaborative.platform.behaviors;
 
 import collaborative.platform.agents.Protocol;
-import collaborative.platform.model.CommercialProposal;
 import collaborative.platform.model.Product;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -41,11 +40,11 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     private void processBuy(ACLMessage aclMessage){
 
         // Search all sellers
-        ServiceDescription sd = new ServiceDescription();
-        sd.setType(Protocol.SERVICE_SELLER);
+        ServiceDescription serviceDescription = new ServiceDescription();
+        serviceDescription.setType(Protocol.SERVICE_SELLER);
 
-        DFAgentDescription sellers = new DFAgentDescription();
-        sellers.addServices(sd);
+        DFAgentDescription dfAgentDescription = new DFAgentDescription();
+        dfAgentDescription.addServices(serviceDescription);
 
         try {
             Product product = (Product) aclMessage.getContentObject();
@@ -55,7 +54,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
             message.setProtocol(Protocol.SELLER_REQUEST_PRICE);
 
             // Send the message to all sellers
-            DFAgentDescription[] result = DFService.search(myAgent, sellers);
+            DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
             for(DFAgentDescription agent : result){
                 message.addReceiver(agent.getName());
             }

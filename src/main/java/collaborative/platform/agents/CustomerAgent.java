@@ -19,7 +19,7 @@ public class CustomerAgent extends GuiAgent {
     protected void setup() {
         initGUI();
         addBehaviour(new CustomerCommercialProposalBehaviour(this));
-        customerGUI.printLog("Agent " + getAID().toString() + " started");
+        customerGUI.printLog("Agent AID : \n" + getAID().toString() + "\n agent started");
     }
 
     @Override

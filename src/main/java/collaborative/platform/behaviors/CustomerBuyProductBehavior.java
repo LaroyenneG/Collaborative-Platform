@@ -38,20 +38,16 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
 
         DFAgentDescription dfAgentDescription = new DFAgentDescription();
         dfAgentDescription.addServices(serviceDescription);
+        dfAgentDescription.addOntologies(Protocol.ONTOLOGY);
 
         try {
             DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
 
             if (result.length > 0) {
-
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
-
                 AID aid = randomAgentDescription.getName();
-
                 sendBuyerBuyMessage(aid);
             }
-
-
         } catch (FIPAException e) {
             e.printStackTrace();
         }
@@ -61,13 +57,16 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
 
         try {
             ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
+
             message.setOntology(Protocol.ONTOLOGY);
             message.setProtocol(Protocol.BUYER_BUY);
             message.setContentObject(product);
             message.addReceiver(aid);
+
             myAgent.send(message);
 
             getCustomerAgent().getCustomerGUI().printLog("Send request to : " + aid.getLocalName());
+
         } catch (IOException e) {
             e.printStackTrace();
         }

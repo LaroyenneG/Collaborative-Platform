@@ -276,8 +276,20 @@ public class CustomerGUI extends JFrame {
     }
 
     private void acceptButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        GuiEvent guiEvent = new GuiEvent(this, ACCEPT_FRAME_CODE);
-        customerAgent.postGuiEvent(guiEvent);
+
+        int index = productsComboBox.getSelectedIndex();
+
+        if (index > 0) {
+
+            String key = productsComboBox.getItemAt(index);
+
+            Product product = stringProductMap.getOrDefault(key, null);
+
+            if (product != null) {
+                GuiEvent guiEvent = new GuiEvent(this, ACCEPT_FRAME_CODE);
+                customerAgent.postGuiEvent(guiEvent);
+            }
+        }
     }
 
     private void refuseButtonActionPerformed(java.awt.event.ActionEvent evt) {

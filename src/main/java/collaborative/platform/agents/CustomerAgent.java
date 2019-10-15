@@ -71,7 +71,7 @@ public class CustomerAgent extends GuiAgent {
                 break;
 
             case CustomerGUI.ACCEPT_FRAME_CODE:
-                BankTransaction bankTransaction = null;
+                BankTransaction bankTransaction = (BankTransaction) guiEvent.getParameter(0);
                 addBehaviour(new CustomerAskTransactionBehaviour(this, bankTransaction));
                 break;
 

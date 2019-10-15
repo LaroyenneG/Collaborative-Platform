@@ -48,6 +48,9 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
                 AID aid = randomAgentDescription.getName();
                 sendBuyerBuyMessage(aid);
+            } else {
+                CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
+                customerGUI.printLog("Cannot find a buyer agent");
             }
         } catch (FIPAException e) {
             e.printStackTrace();

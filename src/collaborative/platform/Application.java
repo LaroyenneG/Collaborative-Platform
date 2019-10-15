@@ -1,9 +1,6 @@
 package collaborative.platform;
 
-import collaborative.platform.agents.BuyerAgent;
-import collaborative.platform.agents.CustomerAgent;
-import collaborative.platform.agents.DeliveryAgent;
-import collaborative.platform.agents.SellerAgent;
+import collaborative.platform.agents.*;
 import collaborative.platform.containers.Container;
 import collaborative.platform.containers.MainContainer;
 import collaborative.platform.containers.SimpleContainer;
@@ -45,9 +42,9 @@ public class Application {
 
 
         /* Bank container Agents */
-        bankContainerAgents.put("Banker-A", BuyerAgent.class.getName());
-        bankContainerAgents.put("Banker-B", BuyerAgent.class.getName());
-        bankContainerAgents.put("Banker-C", BuyerAgent.class.getName());
+        bankContainerAgents.put("Banker-A", BankerAgent.class.getName());
+        bankContainerAgents.put("Banker-B", BankerAgent.class.getName());
+        bankContainerAgents.put("Banker-C", BankerAgent.class.getName());
     }
 
     private static void usage() {

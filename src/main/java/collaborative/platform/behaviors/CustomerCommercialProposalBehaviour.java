@@ -10,14 +10,13 @@ import jade.lang.acl.UnreadableException;
 
 public class CustomerCommercialProposalBehaviour extends Behaviour {
 
-    private MessageTemplate messageTemplate;
+    public static final MessageTemplate MESSAGE_TEMPLATE = MessageTemplate.and(MessageTemplate.MatchOntology(Protocol.ONTOLOGY), MessageTemplate.MatchProtocol(Protocol.CUSTOMER_OFFER));
 
     private boolean processing;
 
     public CustomerCommercialProposalBehaviour(CustomerAgent customerAgent) {
         super(customerAgent);
         processing = true;
-        messageTemplate = MessageTemplate.and(MessageTemplate.MatchOntology(Protocol.ONTOLOGY), MessageTemplate.MatchProtocol(Protocol.CUSTOMER_OFFER));
     }
 
     public CustomerAgent getCustomerAgent() {
@@ -26,7 +25,7 @@ public class CustomerCommercialProposalBehaviour extends Behaviour {
 
     @Override
     public void action() {
-        ACLMessage aclMessage = myAgent.receive(messageTemplate);
+        ACLMessage aclMessage = myAgent.receive(MESSAGE_TEMPLATE);
         if (aclMessage != null) {
             messageProcessing(aclMessage);
         } else {

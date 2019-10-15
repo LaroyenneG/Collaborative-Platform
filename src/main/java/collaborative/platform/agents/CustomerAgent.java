@@ -3,6 +3,7 @@ package collaborative.platform.agents;
 
 import collaborative.platform.behaviors.CustomerBuyProductBehavior;
 import collaborative.platform.behaviors.CustomerCommercialProposalBehaviour;
+import collaborative.platform.behaviors.CustomerTrashMessageBehaviour;
 import collaborative.platform.gui.CustomerGUI;
 import collaborative.platform.model.Product;
 import jade.gui.GuiAgent;
@@ -18,8 +19,9 @@ public class CustomerAgent extends GuiAgent {
     @Override
     protected void setup() {
         initGUI();
-        addBehaviour(new CustomerCommercialProposalBehaviour(this));
         customerGUI.printLog("Agent AID : \n" + getAID().toString() + "\n agent started");
+        addBehaviour(new CustomerCommercialProposalBehaviour(this));
+        addBehaviour(new CustomerTrashMessageBehaviour(this));
     }
 
     @Override
@@ -64,7 +66,6 @@ public class CustomerAgent extends GuiAgent {
             case CustomerGUI.BUY_FRAME_CODE:
                 Product product = (Product) guiEvent.getParameter(0);
                 addBehaviour(new CustomerBuyProductBehavior(this, product));
-                addBehaviour(new CustomerCommercialProposalBehaviour(this));
                 break;
 
             default:

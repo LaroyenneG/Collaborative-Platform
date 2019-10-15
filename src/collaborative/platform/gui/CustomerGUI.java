@@ -301,7 +301,7 @@ public class CustomerGUI extends JFrame {
             if (product != null) {
                 ImageIcon imageIcon = null;
                 try {
-                    imageIcon = new ImageIcon(new URL("https://media.licdn.com/dms/image/C4D03AQEPcYWTlHKSSA/profile-displayphoto-shrink_800_800/0?e=1576713600&v=beta&t=-19dMEZXWhxKvhVgtN4mlQW2bNmD92xK71H7J9B7rBM"));
+                    imageIcon = new ImageIcon(new URL("https://avatars0.githubusercontent.com/u/19565477?s=460&v=4"));
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }

@@ -1,6 +1,7 @@
 package collaborative.platform.gui;
 
 import collaborative.platform.agents.CustomerAgent;
+import collaborative.platform.model.OrderProposal;
 import collaborative.platform.model.Product;
 import jade.gui.GuiEvent;
 import jade.wrapper.ControllerException;
@@ -17,6 +18,7 @@ public class CustomerGUI extends JFrame {
     public static final int EXIT_FRAME_CODE = 1;
     public static final int STOP_FRAME_CODE = 2;
     public static final int BUY_FRAME_CODE = 3;
+    public static final int ACCEPT_FRAME_CODE = 4;
 
     private javax.swing.JButton acceptButton;
     private javax.swing.JLabel agentName;
@@ -274,11 +276,12 @@ public class CustomerGUI extends JFrame {
     }
 
     private void acceptButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println(evt);
+        GuiEvent guiEvent = new GuiEvent(this, ACCEPT_FRAME_CODE);
+        customerAgent.postGuiEvent(guiEvent);
     }
 
     private void refuseButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        System.out.println(evt);
+        lockDecisionButtons();
     }
 
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -329,5 +332,31 @@ public class CustomerGUI extends JFrame {
 
     public CustomerAgent getCustomerAgent() {
         return customerAgent;
+    }
+
+    public void setOrderProposal(OrderProposal orderProposal) {
+
+        if (orderProposal.getProduct() != null) {
+
+            Product product = orderProposal.getProduct();
+
+            int index = -1;
+
+            for (int i = 0; i < productsComboBox.getItemCount(); i++) {
+                if (productsComboBox.getItemAt(i).equals(product.toString())) {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index > 0) {
+                productsComboBox.setSelectedIndex(index);
+            } else {
+                productsComboBox.addItem(product.toString());
+                productsComboBox.setSelectedIndex(productsComboBox.getItemCount() - 1);
+            }
+
+            priceValue.setText("$" + orderProposal.getPrice());
+        }
     }
 }

@@ -1,10 +1,12 @@
 package collaborative.platform.agents;
 
 
+import collaborative.platform.behaviors.CustomerAskTransactionBehaviour;
 import collaborative.platform.behaviors.CustomerBuyProductBehavior;
-import collaborative.platform.behaviors.CustomerCommercialProposalBehaviour;
+import collaborative.platform.behaviors.CustomerOfferProposalBehaviour;
 import collaborative.platform.behaviors.CustomerTrashMessageBehaviour;
 import collaborative.platform.gui.CustomerGUI;
+import collaborative.platform.model.BankTransaction;
 import collaborative.platform.model.Product;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
@@ -20,7 +22,7 @@ public class CustomerAgent extends GuiAgent {
     protected void setup() {
         initGUI();
         customerGUI.printLog("Agent AID : \n" + getAID().toString() + "\n agent started");
-        addBehaviour(new CustomerCommercialProposalBehaviour(this));
+        addBehaviour(new CustomerOfferProposalBehaviour(this));
         addBehaviour(new CustomerTrashMessageBehaviour(this));
     }
 
@@ -66,6 +68,11 @@ public class CustomerAgent extends GuiAgent {
             case CustomerGUI.BUY_FRAME_CODE:
                 Product product = (Product) guiEvent.getParameter(0);
                 addBehaviour(new CustomerBuyProductBehavior(this, product));
+                break;
+
+            case CustomerGUI.ACCEPT_FRAME_CODE:
+                BankTransaction bankTransaction = null;
+                addBehaviour(new CustomerAskTransactionBehaviour(this, bankTransaction));
                 break;
 
             default:

@@ -2,6 +2,7 @@ package collaborative.platform.behaviors;
 
 import collaborative.platform.agents.CustomerAgent;
 import collaborative.platform.agents.Protocol;
+import collaborative.platform.gui.CustomerGUI;
 import collaborative.platform.model.Product;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
@@ -65,7 +66,9 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
 
             myAgent.send(message);
 
-            getCustomerAgent().getCustomerGUI().printLog("Send request to : " + aid.getLocalName());
+            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
+
+            customerGUI.printLog("Send request to : " + aid.getLocalName());
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -48,7 +48,7 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
 
                 AID aid = randomAgentDescription.getName();
 
-                sendBuyerMessage(aid);
+                sendBuyerBuyMessage(aid);
             }
 
 
@@ -57,7 +57,7 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
         }
     }
 
-    private void sendBuyerMessage(AID aid) {
+    private void sendBuyerBuyMessage(AID aid) {
 
         try {
             ACLMessage message = new ACLMessage(ACLMessage.REQUEST);

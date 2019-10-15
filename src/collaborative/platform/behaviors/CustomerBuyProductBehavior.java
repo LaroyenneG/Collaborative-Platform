@@ -65,6 +65,7 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
             message.setProtocol(Protocol.BUYER_BUY);
             message.setContentObject(product);
             message.addReceiver(aid);
+            myAgent.send(message);
 
             getCustomerAgent().getCustomerGUI().printLog("Send request to : " + aid.getLocalName());
         } catch (IOException e) {

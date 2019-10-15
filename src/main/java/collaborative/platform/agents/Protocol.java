@@ -1,23 +1,23 @@
 package collaborative.platform.agents;
 
 public interface Protocol {
-    public static final String ONTOLOGY = "collaborative-plateform";
+    String ONTOLOGY = "collaborative-plateform";
 
-    public static final String SERVICE_BUYER = "buyer";
-    public static final String SERVICE_SELLER = "seller";
-    public static final String SERVICE_DELIVERY = "delivery";
-    public static final String SERVICE_BANKER = "banker";
+    String SERVICE_BUYER = "buyer";
+    String SERVICE_SELLER = "seller";
+    String SERVICE_DELIVERY = "delivery";
+    String SERVICE_BANKER = "banker";
 
-    public static final String CUSTOMER_OFFER = "customerOffer";
-    public static final String CUSTOMER_ACCEPT_REJECT = "customerAcceptReject";
+    String CUSTOMER_OFFER = "customerOffer";
+    String CUSTOMER_TRANSACTION_REPLY = "customerTransactionReply";
 
-    public static final String BUYER_BUY = "buyerBuy";
-    public static final String BUYER_OFFER_FROM_SELLER = "buyerOfferFromSeller";
-    public static final String BUYER_OFFER_FROM_DELIVERY = "buyerOfferFromDelivery";
+    String BUYER_BUY = "buyerBuy";
+    String BUYER_OFFER_FROM_SELLER = "buyerOfferFromSeller";
+    String BUYER_OFFER_FROM_DELIVERY = "buyerOfferFromDelivery";
 
-    public static final String SELLER_REQUEST_PRICE = "sellerRequestPrice";
+    String SELLER_REQUEST_PRICE = "sellerRequestPrice";
 
-    public static final String DELIVERY_REQUEST_PRICE = "deliveryRequestPrice";
+    String DELIVERY_REQUEST_PRICE = "deliveryRequestPrice";
 
-    public static final String BANKER_ASK_TRANSACTION = "bankerAskTransaction";
+    String BANKER_ASK_TRANSACTION = "bankerAskTransaction";
 }

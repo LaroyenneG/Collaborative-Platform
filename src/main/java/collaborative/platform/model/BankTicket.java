@@ -49,7 +49,7 @@ public class BankTicket implements Serializable {
         this.value = value;
     }
 
-    public boolean isState() {
+    public boolean isSucess() {
         return state;
     }
 

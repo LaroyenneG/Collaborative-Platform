@@ -39,9 +39,10 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
 
         DFAgentDescription dfAgentDescription = new DFAgentDescription();
         dfAgentDescription.addServices(serviceDescription);
-        dfAgentDescription.addOntologies(Protocol.ONTOLOGY);
 
         try {
+            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
+
             DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
 
             if (result.length > 0) {
@@ -49,7 +50,6 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
                 AID aid = randomAgentDescription.getName();
                 sendBuyerBuyMessage(aid);
             } else {
-                CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
                 customerGUI.printLog("Cannot find a buyer agent");
             }
         } catch (FIPAException e) {

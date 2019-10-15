@@ -42,6 +42,8 @@ public class CustomerAskTransactionBehaviour extends OneShotBehaviour {
         dfAgentDescription.addOntologies(Protocol.ONTOLOGY);
 
         try {
+            CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
+
             DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
 
             if (result.length > 0) {
@@ -49,7 +51,6 @@ public class CustomerAskTransactionBehaviour extends OneShotBehaviour {
                 AID aid = randomAgentDescription.getName();
                 sendTransactionMessage(aid);
             } else {
-                CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
                 customerGUI.printLog("Cannot find a bank agent");
             }
         } catch (FIPAException e) {

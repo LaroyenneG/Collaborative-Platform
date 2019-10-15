@@ -1,12 +1,15 @@
 package collaborative.platform.gui;
 
 import collaborative.platform.agents.CustomerAgent;
+import collaborative.platform.model.BankTicket;
 import collaborative.platform.model.OrderProposal;
 import collaborative.platform.model.Product;
 import jade.gui.GuiEvent;
 import jade.wrapper.ControllerException;
 
 import javax.swing.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.HashMap;
@@ -19,6 +22,8 @@ public class CustomerGUI extends JFrame {
     public static final int STOP_FRAME_CODE = 2;
     public static final int BUY_FRAME_CODE = 3;
     public static final int ACCEPT_FRAME_CODE = 4;
+    public static final int REFUSE_FRAME_CODE = 5;
+    public static final int PRODUCT_SELECTED_FRAME_CODE = 6;
 
     private javax.swing.JButton acceptButton;
     private javax.swing.JLabel agentName;
@@ -99,6 +104,14 @@ public class CustomerGUI extends JFrame {
 
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         setResizable(false);
+
+        productsComboBox.addItemListener(new ItemListener() {
+
+            @Override
+            public void itemStateChanged(ItemEvent itemEvent) {
+                itemSelectedProductsCombobox(itemEvent);
+            }
+        });
 
         titleLabel.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         titleLabel.setForeground(new java.awt.Color(0, 204, 0));
@@ -256,8 +269,7 @@ public class CustomerGUI extends JFrame {
         pack();
     }
 
-
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void itemSelectedProductsCombobox(ItemEvent itemEvent) {
 
         int index = productsComboBox.getSelectedIndex();
 
@@ -268,28 +280,23 @@ public class CustomerGUI extends JFrame {
             Product product = stringProductMap.getOrDefault(key, null);
 
             if (product != null) {
-                GuiEvent guiEvent = new GuiEvent(this, BUY_FRAME_CODE);
+                GuiEvent guiEvent = new GuiEvent(this, PRODUCT_SELECTED_FRAME_CODE);
                 guiEvent.addParameter(product);
                 customerAgent.postGuiEvent(guiEvent);
             }
         }
     }
 
+
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        GuiEvent guiEvent = new GuiEvent(this, BUY_FRAME_CODE);
+        customerAgent.postGuiEvent(guiEvent);
+    }
+
     private void acceptButtonActionPerformed(java.awt.event.ActionEvent evt) {
 
-        int index = productsComboBox.getSelectedIndex();
-
-        if (index > 0) {
-
-            String key = productsComboBox.getItemAt(index);
-
-            Product product = stringProductMap.getOrDefault(key, null);
-
-            if (product != null) {
-                GuiEvent guiEvent = new GuiEvent(this, ACCEPT_FRAME_CODE);
-                customerAgent.postGuiEvent(guiEvent);
-            }
-        }
+        GuiEvent guiEvent = new GuiEvent(this, ACCEPT_FRAME_CODE);
+        customerAgent.postGuiEvent(guiEvent);
     }
 
     private void refuseButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,7 +353,7 @@ public class CustomerGUI extends JFrame {
         return customerAgent;
     }
 
-    public void setOrderProposal(OrderProposal orderProposal) {
+    public void setOrderProposalInfo(OrderProposal orderProposal) {
 
         if (orderProposal.getProduct() != null) {
 
@@ -361,7 +368,7 @@ public class CustomerGUI extends JFrame {
                 }
             }
 
-            if (index > 0) {
+            if (index >= 0) {
                 productsComboBox.setSelectedIndex(index);
             } else {
                 productsComboBox.addItem(product.toString());
@@ -369,6 +376,31 @@ public class CustomerGUI extends JFrame {
             }
 
             priceValue.setText("$" + orderProposal.getPrice());
+        }
+    }
+
+    public void informBankTicket(BankTicket bankTicket) {
+
+        String title = "Bank transaction";
+
+        if (bankTicket.isSucess()) {
+            JOptionPane.showMessageDialog(this, "Success $" + bankTicket.getValue(), title, JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed $" + bankTicket.getValue(), title, JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public void actualise() {
+
+        OrderProposal orderProposal = customerAgent.getOrderProposal();
+
+        initAgentLabel();
+
+        if (orderProposal != null) {
+            unlockDecisionButtons();
+            setOrderProposalInfo(orderProposal);
+        } else {
+            lockDecisionButtons();
         }
     }
 }

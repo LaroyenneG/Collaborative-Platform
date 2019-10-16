@@ -1,18 +1,11 @@
 package collaborative.platform.agents;
 
-import collaborative.platform.behaviors.BuyerBuyProductBehaviour;
 import collaborative.platform.behaviors.SellerBehaviour;
-import collaborative.platform.model.Product;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.domain.FIPAException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Random;
 
 public class SellerAgent extends Agent {
     @Override

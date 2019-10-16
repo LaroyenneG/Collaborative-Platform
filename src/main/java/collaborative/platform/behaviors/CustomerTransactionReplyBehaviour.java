@@ -33,12 +33,12 @@ public class CustomerTransactionReplyBehaviour extends CyclicBehaviour {
 
     private void messageProcessing(ACLMessage aclMessage) {
 
-
         CustomerAgent customerAgent = getCustomerAgent();
         CustomerGUI customerGUI = customerAgent.getCustomerGUI();
 
         try {
             BankTicket bankTicket = (BankTicket) aclMessage.getContentObject();
+            customerAgent.setOrderProposal(null);
             customerGUI.informBankTicket(bankTicket);
             customerGUI.actualise();
             customerGUI.printLog("Bank ticket :\n" + bankTicket.toString());

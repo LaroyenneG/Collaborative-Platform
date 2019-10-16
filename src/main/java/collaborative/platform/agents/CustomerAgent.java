@@ -81,7 +81,6 @@ public class CustomerAgent extends GuiAgent {
             case CustomerGUI.ACCEPT_FRAME_CODE:
                 BankTransaction bankTransaction = new BankTransaction(orderProposal.getFrom(), orderProposal.getPrice());
                 addBehaviour(new CustomerAskTransactionBehaviour(this, bankTransaction));
-                orderProposal = null;
                 break;
 
             case CustomerGUI.REFUSE_FRAME_CODE:

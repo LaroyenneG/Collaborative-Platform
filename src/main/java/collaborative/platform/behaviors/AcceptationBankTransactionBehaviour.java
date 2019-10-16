@@ -46,14 +46,15 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
                     }
                     ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                     AID aidSender = aclMessage.getSender();
-                    BankTicket bt = new BankTicket(aidReceiver, aidSender, 13, value != null);
+                    BankTicket bankTicket = new BankTicket(aidReceiver, aidSender, 13, value != null);
                     try {
                         message.setProtocol(Protocol.TRANSACTION_REPLY);
                         message.setOntology(Protocol.ONTOLOGY);
-                        message.setContentObject(bt);
+                        message.setContentObject(bankTicket);
                         message.addReceiver(aidSender);
                         message.addReceiver(aidReceiver);
                         myAgent().send(message);
+                        System.out.println("[BANKER] " + bankTicket.toString());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

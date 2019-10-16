@@ -1,7 +1,5 @@
 package collaborative.platform.model;
 
-import jade.core.Agent;
-
 import java.io.Serializable;
 
 public class DeliveryProposal implements Serializable {
@@ -12,10 +10,6 @@ public class DeliveryProposal implements Serializable {
     public DeliveryProposal(long time, long price) {
         this.time = time;
         this.price = price;
-    }
-
-    public DeliveryProposal(long time, long price, Agent agent) {
-        this(time, price);
     }
 
     @Override

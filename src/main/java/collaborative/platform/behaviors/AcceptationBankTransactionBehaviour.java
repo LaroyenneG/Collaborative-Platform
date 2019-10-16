@@ -46,7 +46,12 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
                     }
                     ACLMessage message = new ACLMessage(ACLMessage.INFORM);
                     AID aidSender = aclMessage.getSender();
-                    BankTicket bankTicket = new BankTicket(aidReceiver, aidSender, 13, value != null);
+                    BankTicket bankTicket;
+                    if (value!=null){
+                        bankTicket = new BankTicket(aidReceiver, aidSender, value, true);
+                    }else{
+                        bankTicket = new BankTicket(aidReceiver, aidSender, 0, false);
+                    }
                     try {
                         message.setProtocol(Protocol.TRANSACTION_REPLY);
                         message.setOntology(Protocol.ONTOLOGY);
@@ -67,7 +72,6 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
         String sender = aclMessage.getSender().getLocalName();
         BankerAgent bankerAgent = myAgent();
         Long accountSender = bankerAgent.getAccount().get(sender);
-        //Pair<Boolean,Long> pair = null;
         if (accountSender == null) {
             return null;
         } else {
@@ -75,17 +79,20 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
                 BankTransaction bankTransaction = (BankTransaction) aclMessage.getContentObject();
                 long value = bankTransaction.getValue();
                 if (accountSender < value) {
+                    System.out.println("[BANKER] " +"There is not enough fund in the account");
                     return null;
                 } else {
                     String receiver = bankTransaction.getReceiver().getLocalName();
                     Long accountReceiver = bankerAgent.getAccount().get(sender);
                     if (accountReceiver == null) {
+                        System.out.println("[BANKER] " +"The receiver of the transaction is unknowed by our service");
                         return null;
                     } else {
                         long newValueSender = accountSender - value;
                         long newValueReceiver = accountReceiver + value;
                         bankerAgent.getAccount().put(sender, newValueSender);
                         bankerAgent.getAccount().put(receiver, newValueReceiver);
+                        System.out.println("[BANKER] " +"The transaction is effectued :" +value);
                         return value;
                     }
                 }
@@ -96,8 +103,6 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
 
         }
 
-//TODO System.out.println pour voir les trucs qui se passe
-        //TODO nettoyer Pair
     }
 }
 

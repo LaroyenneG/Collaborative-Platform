@@ -29,13 +29,10 @@ public class BankerAgent extends Agent {
         }
         account = new HashMap<>();
         account.put("Customer-A", 1000L);
-        account.put("Customer-B", 500L);
-        account.put("Customer-C",50L);
+        account.put("Customer-B", 10L);
+        account.put("Customer-C",5L);
 
         addBehaviour(new AcceptationBankTransactionBehaviour(this));
-
-
-
 
     }
 

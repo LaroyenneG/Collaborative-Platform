@@ -18,6 +18,7 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
     public void action() {
         ACLMessage aclMessage = myAgent.receive();
         if (aclMessage != null) {
+            if (!aclMessage.getOntology().equals(Protocol.ONTOLOGY)) return;
             messageProcessing(aclMessage);
         } else {
             block();
@@ -25,17 +26,13 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
     }
 
     private void messageProcessing(ACLMessage aclMessage) {
-        switch (aclMessage.getProtocol()) {
-            case Protocol.DELIVERY_REQUEST_PRICE:
-                // je dois envoyer BUYER_OFFER_FROM_DELIVERY
-                processRequestPrice(aclMessage);
-                break;
-            default:
-                throw new RuntimeException("delivery doesn't understand protocol"); // todo utilitée ?
+        if (Protocol.DELIVERY_REQUEST_PRICE.equals(aclMessage.getProtocol())) {
+            processRequestPrice(aclMessage);
         }
     }
 
     private void processRequestPrice(ACLMessage aclMessage) {
+        System.out.println("[" + this.myAgent.getLocalName() + "] Request Price received.");
         DeliveryProposal deliveryProposal = new DeliveryProposal(
                 System.currentTimeMillis(),
                 ThreadLocalRandom.current().nextInt(1, 1001)
@@ -43,8 +40,10 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
 
         try {
             ACLMessage aclReply = aclMessage.createReply();
+            aclReply.setProtocol(Protocol.BUYER_OFFER_FROM_DELIVERY);
             aclReply.setContentObject(deliveryProposal);
             myAgent.send(aclReply);
+            System.out.println("[" + this.myAgent.getLocalName() + "] Offer send to buyer.");
         } catch (IOException e) {
             e.printStackTrace();
         }

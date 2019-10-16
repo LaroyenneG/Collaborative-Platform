@@ -35,7 +35,7 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
         System.out.println("[" + this.myAgent.getLocalName() + "] Request Price received.");
         DeliveryProposal deliveryProposal = new DeliveryProposal(
                 System.currentTimeMillis(),
-                ThreadLocalRandom.current().nextInt(1, 1001)
+                ThreadLocalRandom.current().nextLong(1, 11)
         );
 
         try {

@@ -10,6 +10,7 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class SellerBehaviour extends CyclicBehaviour {
     private HashMap<Product, Long> pricesTable = new HashMap<>();
@@ -19,7 +20,7 @@ public class SellerBehaviour extends CyclicBehaviour {
 
         Random r = new Random();
         for (Product product : Product.productList()) {
-            pricesTable.put(product, r.nextLong()*9 + 1); //prix aléatoire entre 1 et 10€
+            pricesTable.put(product, ThreadLocalRandom.current().nextLong(1, 11)); //prix aléatoire entre 1 et 10€
         }
     }
 

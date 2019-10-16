@@ -18,6 +18,7 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
     public void action() {
         ACLMessage aclMessage = myAgent.receive();
         if (aclMessage != null) {
+            if (!aclMessage.getOntology().equals(Protocol.ONTOLOGY)) return;
             messageProcessing(aclMessage);
         } else {
             block();

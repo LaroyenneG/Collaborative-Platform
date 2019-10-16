@@ -17,7 +17,7 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
         super(a);
     }
 
-    public BankerAgent myAgent() {
+    private BankerAgent myAgent() {
         return (BankerAgent) this.myAgent;
     }
 

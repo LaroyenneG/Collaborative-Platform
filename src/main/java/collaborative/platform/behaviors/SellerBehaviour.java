@@ -18,9 +18,11 @@ public class SellerBehaviour extends CyclicBehaviour {
     public SellerBehaviour(Agent a) {
         super(a);
 
-        Random r = new Random();
         for (Product product : Product.productList()) {
-            pricesTable.put(product, ThreadLocalRandom.current().nextLong(1, 11)); //prix aléatoire entre 1 et 10€
+            long leftLimit = 1L;
+            long rightLimit = 10L;
+            long randomPrice = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+            pricesTable.put(product, randomPrice); //prix aléatoire entre 1 et 10€
         }
     }
 
@@ -48,6 +50,7 @@ public class SellerBehaviour extends CyclicBehaviour {
                         ACLMessage answer = aclMessage.createReply();
                         answer.setContentObject(offer);
                         answer.setProtocol(Protocol.BUYER_OFFER_FROM_SELLER);
+                        System.out.println("[" + this.myAgent.getLocalName() + "] Price sent to buyer : " + pricesTable.get(asked).longValue() + "€");
                         myAgent.send(answer);
                     } catch (Exception e) {
                         e.printStackTrace();

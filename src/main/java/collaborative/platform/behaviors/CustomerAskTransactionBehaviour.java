@@ -39,7 +39,6 @@ public class CustomerAskTransactionBehaviour extends OneShotBehaviour {
 
         DFAgentDescription dfAgentDescription = new DFAgentDescription();
         dfAgentDescription.addServices(serviceDescription);
-        dfAgentDescription.addOntologies(Protocol.ONTOLOGY);
 
         CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
 

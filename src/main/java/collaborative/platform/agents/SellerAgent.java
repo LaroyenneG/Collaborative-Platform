@@ -17,7 +17,7 @@ public class SellerAgent extends Agent {
 
             ServiceDescription serviceDescription = new ServiceDescription();
             serviceDescription.setName(getLocalName());
-            serviceDescription.setType(Protocol.SERVICE_BUYER);
+            serviceDescription.setType(Protocol.SERVICE_SELLER);
 
             dfAgentDescription.addServices(serviceDescription);
 

@@ -3,7 +3,7 @@ package collaborative.platform.behaviors;
 import collaborative.platform.agents.CustomerAgent;
 import collaborative.platform.agents.Protocol;
 import collaborative.platform.gui.CustomerGUI;
-import collaborative.platform.model.Product;
+import collaborative.platform.model.BankTransaction;
 import jade.core.AID;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
@@ -16,15 +16,15 @@ import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.Random;
 
-public class CustomerBuyProductBehavior extends OneShotBehaviour {
+public class CustomerAskTransactionBehaviour extends OneShotBehaviour {
 
     private static final Random RANDOM = new SecureRandom();
 
-    private Product product;
+    private BankTransaction bankTransaction;
 
-    public CustomerBuyProductBehavior(CustomerAgent agent, Product product) {
+    public CustomerAskTransactionBehaviour(CustomerAgent agent, BankTransaction bankTransaction) {
         super(agent);
-        this.product = product;
+        this.bankTransaction = bankTransaction;
     }
 
     public CustomerAgent getCustomerAgent() {
@@ -35,39 +35,40 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
     public void action() {
 
         ServiceDescription serviceDescription = new ServiceDescription();
-        serviceDescription.setType(Protocol.SERVICE_BUYER);
+        serviceDescription.setType(Protocol.SERVICE_BANKER);
 
         DFAgentDescription dfAgentDescription = new DFAgentDescription();
         dfAgentDescription.addServices(serviceDescription);
+        dfAgentDescription.addOntologies(Protocol.ONTOLOGY);
 
         CustomerGUI customerGUI = getCustomerAgent().getCustomerGUI();
 
         try {
-
             DFAgentDescription[] result = DFService.search(myAgent, dfAgentDescription);
 
             if (result.length > 0) {
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
                 AID aid = randomAgentDescription.getName();
-                sendBuyerBuyMessage(aid);
-                customerGUI.printLog("Send price request to : " + aid.getLocalName());
+                sendTransactionMessage(aid);
+                customerGUI.printLog("Send bank request to : " + aid.getLocalName());
             } else {
-                customerGUI.printLog("Cannot find a buyer agent");
+                customerGUI.printLog("Cannot find a bank agent");
             }
-
         } catch (FIPAException | IOException e) {
             e.printStackTrace();
-            customerGUI.printLog("Cannot send a message to buyer agent");
+            customerGUI.printLog("Cannot send message to bank agent");
         }
     }
 
-    private void sendBuyerBuyMessage(AID aid) throws IOException {
+
+    private void sendTransactionMessage(AID aid) throws IOException {
+
 
         ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
 
         message.setOntology(Protocol.ONTOLOGY);
-        message.setProtocol(Protocol.BUYER_BUY);
-        message.setContentObject(product);
+        message.setProtocol(Protocol.BANKER_ASK_TRANSACTION);
+        message.setContentObject(bankTransaction);
         message.addReceiver(aid);
 
         myAgent.send(message);

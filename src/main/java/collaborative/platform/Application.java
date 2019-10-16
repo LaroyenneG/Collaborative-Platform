@@ -43,8 +43,6 @@ public class Application {
 
         /* Bank container Agents */
         bankContainerAgents.put("Banker-A", BankerAgent.class.getName());
-        bankContainerAgents.put("Banker-B", BankerAgent.class.getName());
-        bankContainerAgents.put("Banker-C", BankerAgent.class.getName());
     }
 
     private static void usage() {

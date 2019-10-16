@@ -11,7 +11,7 @@ import jade.lang.acl.UnreadableException;
 
 public class CustomerTransactionReplyBehaviour extends CyclicBehaviour {
 
-    public static final MessageTemplate MESSAGE_TEMPLATE = MessageTemplate.and(MessageTemplate.MatchOntology(Protocol.ONTOLOGY), MessageTemplate.MatchProtocol(Protocol.CUSTOMER_TRANSACTION_REPLY));
+    public static final MessageTemplate MESSAGE_TEMPLATE = MessageTemplate.and(MessageTemplate.MatchOntology(Protocol.ONTOLOGY), MessageTemplate.MatchProtocol(Protocol.TRANSACTION_REPLY));
 
     public CustomerTransactionReplyBehaviour(CustomerAgent customerAgent) {
         super(customerAgent);

@@ -9,7 +9,7 @@ public interface Protocol {
     String SERVICE_BANKER = "banker";
 
     String CUSTOMER_OFFER = "customerOffer";
-    String CUSTOMER_TRANSACTION_REPLY = "customerTransactionReply";
+    String TRANSACTION_REPLY = "TransactionReply";
 
     String BUYER_BUY = "buyerBuy";
     String BUYER_OFFER_FROM_SELLER = "buyerOfferFromSeller";

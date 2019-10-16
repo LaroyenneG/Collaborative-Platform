@@ -64,7 +64,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void processBuy(ACLMessage buyMessage){
-        System.out.println("[BUYER] ==> Buy request received");
+        System.out.println("[" + myAgent.getLocalName() + "] ==> Buy request received");
 
         // Initialiser les listes pour enregistrer les offres
         commercialProposal.put(buyMessage.getSender().hashCode(), new ArrayList<>());
@@ -77,7 +77,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void processOfferFromSeller(ACLMessage aclMessage){
-        System.out.println("[BUYER] ==> Seller offer received");
+        System.out.println("[" + myAgent.getLocalName() + "] ==> Seller offer received");
 
         try {
             commercialProposal.get(Integer.parseInt(aclMessage.getConversationId())).add((CommercialProposal) aclMessage.getContentObject());
@@ -87,7 +87,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void processOfferFromDelivery(ACLMessage aclMessage){
-        System.out.println("[BUYER] ==> Delivery offer received");
+        System.out.println("[" + myAgent.getLocalName() + "] ==> Delivery offer received");
 
         try {
             deliveryProposal.get(Integer.parseInt(aclMessage.getConversationId())).add((DeliveryProposal) aclMessage.getContentObject());
@@ -97,7 +97,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void sendRequestPriceSeller(ACLMessage buyMessage){
-        System.out.println("[BUYER] ==> Send request to seller");
+        System.out.println("[" + myAgent.getLocalName() + "] ==> Send request to seller");
 
         try {
             Product product = (Product) buyMessage.getContentObject();
@@ -121,7 +121,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void sendRequestPriceDelivery(ACLMessage buyMessage){
-        System.out.println("[BUYER] ==> Send request to delivery");
+        System.out.println("[" + myAgent.getLocalName() + "] ==> Send request to delivery");
 
         try {
             ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
@@ -142,7 +142,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void sendOfferToCustomer(OrderProposal op, AID customer) throws IOException {
-        System.out.println("[BUYER] ==> Send response to customer");
+        System.out.println("[" + myAgent.getLocalName() + "] ==> Send response to customer");
 
         ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
         message.setOntology(Protocol.ONTOLOGY);

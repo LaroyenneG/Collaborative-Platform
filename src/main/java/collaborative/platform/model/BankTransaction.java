@@ -17,7 +17,7 @@ public class BankTransaction implements Serializable {
 
     @Override
     public String toString() {
-        return value + " ->" + receiver.toString();
+        return "$" + value + " --> " + receiver.toString();
     }
 
     public AID getReceiver() {

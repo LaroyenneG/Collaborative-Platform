@@ -49,7 +49,7 @@ public class CustomerAskTransactionBehaviour extends OneShotBehaviour {
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
                 AID aid = randomAgentDescription.getName();
                 sendTransactionMessage(aid);
-                customerGUI.printLog("Send bank request to : " + aid.getLocalName());
+                customerGUI.printLog("Send bank request to " + aid.getLocalName());
             } else {
                 customerGUI.printLog("Cannot find a bank agent");
             }

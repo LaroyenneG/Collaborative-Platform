@@ -1,6 +1,7 @@
 package collaborative.platform.behaviors;
 
 import collaborative.platform.agents.Protocol;
+import collaborative.platform.helper.Helper;
 import collaborative.platform.model.DeliveryProposal;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -32,7 +33,9 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
     }
 
     private void processRequestPrice(ACLMessage aclMessage) {
-        System.out.println("[" + this.myAgent.getLocalName() + "] Request Price received.");
+
+        Helper.agentPrint(myAgent, "request price received from " + aclMessage.getSender().getLocalName());
+
         DeliveryProposal deliveryProposal = new DeliveryProposal(
                 System.currentTimeMillis(),
                 ThreadLocalRandom.current().nextLong(1, 11)
@@ -43,7 +46,8 @@ public class DeliveryProposalBehavior extends CyclicBehaviour {
             aclReply.setProtocol(Protocol.BUYER_OFFER_FROM_DELIVERY);
             aclReply.setContentObject(deliveryProposal);
             myAgent.send(aclReply);
-            System.out.println("[" + this.myAgent.getLocalName() + "] Offer send to buyer.");
+
+            Helper.agentPrint(myAgent, "offer of $" + deliveryProposal.getPrice() + " send to " + aclMessage.getSender().getLocalName());
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,16 +1,14 @@
 package collaborative.platform.behaviors;
 
 import collaborative.platform.agents.Protocol;
+import collaborative.platform.helper.Helper;
 import collaborative.platform.model.CommercialProposal;
-import collaborative.platform.model.DeliveryProposal;
 import collaborative.platform.model.Product;
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.HashMap;
 
 public class SellerBehaviour extends CyclicBehaviour {
     private HashMap<Product, Long> pricesTable = new HashMap<>();
@@ -22,7 +20,7 @@ public class SellerBehaviour extends CyclicBehaviour {
             long leftLimit = 1L;
             long rightLimit = 10L;
             long randomPrice = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
-            pricesTable.put(product, randomPrice); //prix aléatoire entre 1 et 10€
+            pricesTable.put(product, randomPrice); //prix aléatoire entre 1 et 10$
         }
     }
 
@@ -37,9 +35,12 @@ public class SellerBehaviour extends CyclicBehaviour {
                     try {
                         Product asked = (Product) aclMessage.getContentObject();
                         if (asked == null) {
-                            System.out.println("product null");
+                            Helper.agentPrint(myAgent, "product null");
                             return;
                         }
+
+                        Helper.agentPrint(myAgent, "request price received from " + aclMessage.getSender().getLocalName() + " for " + asked.getName());
+
                         CommercialProposal offer;
                         if (pricesTable.containsKey(asked)) {
                             offer = new CommercialProposal(asked, pricesTable.get(asked));
@@ -50,7 +51,7 @@ public class SellerBehaviour extends CyclicBehaviour {
                         ACLMessage answer = aclMessage.createReply();
                         answer.setContentObject(offer);
                         answer.setProtocol(Protocol.BUYER_OFFER_FROM_SELLER);
-                        System.out.println("[" + this.myAgent.getLocalName() + "] Price sent to buyer : " + pricesTable.get(asked).longValue() + "€");
+                        Helper.agentPrint(myAgent, "offer of $" + pricesTable.get(asked) + " send to " + aclMessage.getSender().getLocalName());
                         myAgent.send(answer);
                     } catch (Exception e) {
                         e.printStackTrace();

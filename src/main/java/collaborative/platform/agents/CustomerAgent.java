@@ -27,7 +27,7 @@ public class CustomerAgent extends GuiAgent {
 
         initAttributes();
         initGUI();
-        customerGUI.printLog("Agent AID : \n" + getAID().toString() + "\n agent started");
+        customerGUI.printLog("Agent started !");
         addBehaviour(new CustomerOfferBehaviour(this));
         addBehaviour(new CustomerTrashMessageBehaviour(this));
         addBehaviour(new CustomerTransactionReplyBehaviour(this));
@@ -41,9 +41,8 @@ public class CustomerAgent extends GuiAgent {
 
     @Override
     protected void takeDown() {
-        customerGUI.printLog("Agent " + getAID().toString() + " end");
+        customerGUI.printLog("Agent stopped !");
         stopGUI();
-
         Helper.agentPrintStopped(this);
     }
 

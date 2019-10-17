@@ -1,6 +1,6 @@
 package collaborative.platform.agents;
 
-import collaborative.platform.behaviors.AcceptationBankTransactionBehaviour;
+import collaborative.platform.behaviors.BankerAcceptationBankTransactionBehaviour;
 import collaborative.platform.helper.Helper;
 import jade.core.Agent;
 import jade.domain.DFService;
@@ -41,7 +41,7 @@ public class BankerAgent extends Agent {
             e1.printStackTrace();
         }
 
-        addBehaviour(new AcceptationBankTransactionBehaviour(this));
+        addBehaviour(new BankerAcceptationBankTransactionBehaviour(this));
     }
 
     @Override

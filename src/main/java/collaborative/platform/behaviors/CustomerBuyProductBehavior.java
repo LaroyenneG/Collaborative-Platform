@@ -50,7 +50,7 @@ public class CustomerBuyProductBehavior extends OneShotBehaviour {
                 DFAgentDescription randomAgentDescription = result[RANDOM.nextInt(result.length)];
                 AID aid = randomAgentDescription.getName();
                 sendBuyerBuyMessage(aid);
-                customerGUI.printLog("Send price request to : " + aid.getLocalName());
+                customerGUI.printLog("Send price request to " + aid.getLocalName());
             } else {
                 customerGUI.printLog("Cannot find a buyer agent");
             }

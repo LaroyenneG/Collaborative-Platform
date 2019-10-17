@@ -41,7 +41,12 @@ public class CustomerTransactionReplyBehaviour extends CyclicBehaviour {
             customerAgent.setOrderProposal(null);
             customerGUI.informBankTicket(bankTicket);
             customerGUI.actualise();
-            customerGUI.printLog("Bank ticket :\n" + bankTicket.toString());
+
+            if (bankTicket.isSucess()) {
+                customerGUI.printLog("Transaction successful !");
+            } else {
+                customerGUI.printLog("Transaction failed !");
+            }
         } catch (UnreadableException e) {
             e.printStackTrace();
             customerGUI.printLog("Bank ticket error");

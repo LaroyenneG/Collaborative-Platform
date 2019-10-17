@@ -8,10 +8,16 @@ public class Helper {
 
     private static String printLogHeader(Agent agent) {
 
+        String offset = "\t";
+
+        if (agent.getLocalName().length() <= 8) {
+            offset += "\t";
+        }
+
         return '[' +
                 agent.getLocalName() +
                 ']' +
-                ' ';
+                offset;
     }
 
     public static void agentPrint(Agent agent, String msg) {

@@ -2,6 +2,7 @@ package collaborative.platform.behaviors;
 
 import collaborative.platform.agents.BankerAgent;
 import collaborative.platform.agents.Protocol;
+import collaborative.platform.helper.Helper;
 import collaborative.platform.model.BankTicket;
 import collaborative.platform.model.BankTransaction;
 import jade.core.AID;
@@ -11,9 +12,9 @@ import jade.lang.acl.UnreadableException;
 
 import java.io.IOException;
 
-public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
+public class BankerAcceptationBankTransactionBehaviour extends CyclicBehaviour {
 
-    public AcceptationBankTransactionBehaviour(BankerAgent a) {
+    public BankerAcceptationBankTransactionBehaviour(BankerAgent a) {
         super(a);
     }
 
@@ -41,26 +42,25 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
                     try {
                         BankTransaction bankTransaction = (BankTransaction) aclMessage.getContentObject();
                         aidReceiver = bankTransaction.getReceiver();
-                    } catch (UnreadableException e) {
-                        e.printStackTrace();
-                    }
-                    ACLMessage message = new ACLMessage(ACLMessage.INFORM);
-                    AID aidSender = aclMessage.getSender();
-                    BankTicket bankTicket;
-                    if (value!=null){
-                        bankTicket = new BankTicket(aidReceiver, aidSender, value, true);
-                    }else{
-                        bankTicket = new BankTicket(aidReceiver, aidSender, 0, false);
-                    }
-                    try {
+
+                        ACLMessage message = new ACLMessage(ACLMessage.INFORM);
+                        AID aidSender = aclMessage.getSender();
+                        BankTicket bankTicket;
+                        if (value != null) {
+                            bankTicket = new BankTicket(aidReceiver, aidSender, value, true);
+                        } else {
+                            bankTicket = new BankTicket(aidReceiver, aidSender, 0, false);
+                        }
+
                         message.setProtocol(Protocol.TRANSACTION_REPLY);
                         message.setOntology(Protocol.ONTOLOGY);
                         message.setContentObject(bankTicket);
                         message.addReceiver(aidSender);
                         message.addReceiver(aidReceiver);
                         myAgent().send(message);
-                        System.out.println("[BANKER] " + bankTicket.toString());
-                    } catch (IOException e) {
+                        Helper.agentPrint(myAgent, "transaction ticket of $" + bankTicket.getValue() + " send to " + aidSender.getLocalName() + " and " + aidReceiver.getLocalName());
+
+                    } catch (UnreadableException | IOException e) {
                         e.printStackTrace();
                     }
                     break;
@@ -79,20 +79,20 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
                 BankTransaction bankTransaction = (BankTransaction) aclMessage.getContentObject();
                 long value = bankTransaction.getValue();
                 if (accountSender < value) {
-                    System.out.println("[BANKER] " +"There is not enough fund in the account");
+                    Helper.agentPrint(myAgent, "there is not enough fund in the account of " + aclMessage.getSender().getLocalName());
                     return null;
                 } else {
                     String receiver = bankTransaction.getReceiver().getLocalName();
                     Long accountReceiver = bankerAgent.getAccount().get(sender);
                     if (accountReceiver == null) {
-                        System.out.println("[BANKER] " +"The receiver of the transaction is unknowed by our service");
+                        Helper.agentPrint(myAgent, "the receiver of the transaction is unknowed by our service");
                         return null;
                     } else {
                         long newValueSender = accountSender - value;
                         long newValueReceiver = accountReceiver + value;
                         bankerAgent.getAccount().put(sender, newValueSender);
                         bankerAgent.getAccount().put(receiver, newValueReceiver);
-                        System.out.println("[BANKER] " +"The transaction is effectued :" +value);
+                        Helper.agentPrint(myAgent, "transaction is done : $" + value + " from " + sender + " to " + receiver);
                         return value;
                     }
                 }
@@ -100,9 +100,7 @@ public class AcceptationBankTransactionBehaviour extends CyclicBehaviour {
                 e.printStackTrace();
                 return null;
             }
-
         }
-
     }
 }
 

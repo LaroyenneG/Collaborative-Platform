@@ -1,6 +1,7 @@
 package collaborative.platform.behaviors;
 
 import collaborative.platform.agents.Protocol;
+import collaborative.platform.helper.Helper;
 import collaborative.platform.model.CommercialProposal;
 import collaborative.platform.model.DeliveryProposal;
 import collaborative.platform.model.OrderProposal;
@@ -44,11 +45,11 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void messageProcessing(ACLMessage aclMessage) {
-        if(!aclMessage.getOntology().equals(Protocol.ONTOLOGY)){
+        if (!aclMessage.getOntology().equals(Protocol.ONTOLOGY)) {
             return;
         }
 
-        switch (aclMessage.getProtocol()){
+        switch (aclMessage.getProtocol()) {
             case Protocol.BUYER_BUY:
                 processBuy(aclMessage);
                 break;
@@ -63,8 +64,14 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
         }
     }
 
-    private void processBuy(ACLMessage buyMessage){
-        System.out.println("[" + myAgent.getLocalName() + "] ==> Buy request received");
+    private void processBuy(ACLMessage buyMessage) {
+
+        try {
+            Product product = (Product) buyMessage.getContentObject();
+            Helper.agentPrint(myAgent, "buy request received for " + product.getName());
+        } catch (UnreadableException e) {
+            e.printStackTrace();
+        }
 
         // Initialiser les listes pour enregistrer les offres
         commercialProposal.put(buyMessage.getSender().hashCode(), new ArrayList<>());
@@ -76,28 +83,29 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
         sendRequestPriceDelivery(buyMessage);
     }
 
-    private void processOfferFromSeller(ACLMessage aclMessage){
-        System.out.println("[" + myAgent.getLocalName() + "] ==> Seller offer received");
+    private void processOfferFromSeller(ACLMessage aclMessage) {
 
         try {
+            Helper.agentPrint(myAgent, "offer received from " + aclMessage.getSender().getLocalName() + " ($" + ((CommercialProposal) aclMessage.getContentObject()).getPrice() + ")");
             commercialProposal.get(Integer.parseInt(aclMessage.getConversationId())).add((CommercialProposal) aclMessage.getContentObject());
         } catch (UnreadableException e) {
             e.printStackTrace();
         }
     }
 
-    private void processOfferFromDelivery(ACLMessage aclMessage){
-        System.out.println("[" + myAgent.getLocalName() + "] ==> Delivery offer received");
+    private void processOfferFromDelivery(ACLMessage aclMessage) {
 
         try {
+            Helper.agentPrint(myAgent, "offer received from " + aclMessage.getSender().getLocalName() + " ($" + ((DeliveryProposal) aclMessage.getContentObject()).getPrice() + ")");
             deliveryProposal.get(Integer.parseInt(aclMessage.getConversationId())).add((DeliveryProposal) aclMessage.getContentObject());
         } catch (UnreadableException e) {
             e.printStackTrace();
         }
     }
 
-    private void sendRequestPriceSeller(ACLMessage buyMessage){
-        System.out.println("[" + myAgent.getLocalName() + "] ==> Send request to seller");
+    private void sendRequestPriceSeller(ACLMessage buyMessage) {
+
+        Helper.agentPrint(myAgent, "send request to sellers");
 
         try {
             Product product = (Product) buyMessage.getContentObject();
@@ -110,7 +118,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
 
             // Send the message to all sellers
             DFAgentDescription[] result = getAllService(Protocol.SERVICE_SELLER);
-            for(DFAgentDescription agent : result){
+            for (DFAgentDescription agent : result) {
                 message.addReceiver(agent.getName());
             }
 
@@ -120,8 +128,9 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
         }
     }
 
-    private void sendRequestPriceDelivery(ACLMessage buyMessage){
-        System.out.println("[" + myAgent.getLocalName() + "] ==> Send request to delivery");
+    private void sendRequestPriceDelivery(ACLMessage buyMessage) {
+
+        Helper.agentPrint(myAgent, "send request to deliveries");
 
         try {
             ACLMessage message = new ACLMessage(ACLMessage.REQUEST);
@@ -131,7 +140,7 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
 
             // Send the message to all delivery
             DFAgentDescription[] result = getAllService(Protocol.SERVICE_DELIVERY);
-            for(DFAgentDescription agent : result){
+            for (DFAgentDescription agent : result) {
                 message.addReceiver(agent.getName());
             }
 
@@ -142,7 +151,8 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     }
 
     private void sendOfferToCustomer(OrderProposal op, AID customer) throws IOException {
-        System.out.println("[" + myAgent.getLocalName() + "] ==> Send response to customer");
+
+        Helper.agentPrint(myAgent, "send best price ($" + op.getPrice() + ") to " + customer.getLocalName());
 
         ACLMessage message = new ACLMessage(ACLMessage.PROPOSE);
         message.setOntology(Protocol.ONTOLOGY);
@@ -156,15 +166,15 @@ public class BuyerBuyProductBehaviour extends CyclicBehaviour {
     private void chooseOffer() {
         Iterator<Map.Entry<Integer, List<CommercialProposal>>> cpIt = commercialProposal.entrySet().iterator();
 
-        while(cpIt.hasNext()){
+        while (cpIt.hasNext()) {
             Map.Entry<Integer, List<CommercialProposal>> cp = cpIt.next();
             List<DeliveryProposal> deliveryProposals = deliveryProposal.get(cp.getKey());
 
             try {
                 // Si tous les Sellers et tous les Delivery ont répondu
-                if(cp.getValue().size() == getAllService(Protocol.SERVICE_SELLER).length && deliveryProposals.size() == getAllService(Protocol.SERVICE_DELIVERY).length){
-                    CommercialProposal bestCP = Collections.min(cp.getValue(), (cp1, cp2) -> (int)(cp1.getPrice() - cp2.getPrice()));
-                    DeliveryProposal bestDP = Collections.min(deliveryProposals, (dp1, dp2) -> (int)(dp1.getPrice() - dp2.getPrice()));
+                if (cp.getValue().size() == getAllService(Protocol.SERVICE_SELLER).length && deliveryProposals.size() == getAllService(Protocol.SERVICE_DELIVERY).length) {
+                    CommercialProposal bestCP = Collections.min(cp.getValue(), (cp1, cp2) -> (int) (cp1.getPrice() - cp2.getPrice()));
+                    DeliveryProposal bestDP = Collections.min(deliveryProposals, (dp1, dp2) -> (int) (dp1.getPrice() - dp2.getPrice()));
 
                     // Envoyer la meilleure proposition au client
                     OrderProposal op = new OrderProposal(bestCP.getProduct(), bestCP.getPrice() + bestDP.getPrice());

@@ -3,6 +3,7 @@ package collaborative.platform.agents;
 
 import collaborative.platform.behaviors.*;
 import collaborative.platform.gui.CustomerGUI;
+import collaborative.platform.helper.Helper;
 import collaborative.platform.model.BankTransaction;
 import collaborative.platform.model.OrderProposal;
 import collaborative.platform.model.Product;
@@ -21,6 +22,9 @@ public class CustomerAgent extends GuiAgent {
 
     @Override
     protected void setup() {
+
+        Helper.agentPrintStarted(this);
+
         initAttributes();
         initGUI();
         customerGUI.printLog("Agent AID : \n" + getAID().toString() + "\n agent started");
@@ -39,6 +43,8 @@ public class CustomerAgent extends GuiAgent {
     protected void takeDown() {
         customerGUI.printLog("Agent " + getAID().toString() + " end");
         stopGUI();
+
+        Helper.agentPrintStopped(this);
     }
 
     @Override

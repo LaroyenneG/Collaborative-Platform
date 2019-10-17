@@ -1,6 +1,7 @@
 package collaborative.platform.agents;
 
 import collaborative.platform.behaviors.AcceptationBankTransactionBehaviour;
+import collaborative.platform.helper.Helper;
 import jade.core.Agent;
 import jade.domain.DFService;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -11,29 +12,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BankerAgent extends Agent {
+
     private Map<String,Long> account;
+
     protected void setup() {
-        DFAgentDescription dfAgentDescription = new DFAgentDescription();
-        dfAgentDescription.setName(this.getAID());
 
-        ServiceDescription serviceDescription = new ServiceDescription();
-        serviceDescription.setName(getLocalName());
-        serviceDescription.setType(Protocol.SERVICE_BANKER);
+        Helper.agentPrintStarted(this);
 
-        dfAgentDescription.addServices(serviceDescription);
+        account = new HashMap<>();
+        account.put("Customer-A", 100L);
+        account.put("Customer-B", 10L);
+        account.put("Customer-C", 5L);
 
         try {
+            DFAgentDescription dfAgentDescription = new DFAgentDescription();
+            dfAgentDescription.setName(this.getAID());
+
+            ServiceDescription serviceDescription = new ServiceDescription();
+            serviceDescription.setName(getLocalName());
+            serviceDescription.setType(Protocol.SERVICE_BANKER);
+
+            dfAgentDescription.addServices(serviceDescription);
+
             DFService.register(this, dfAgentDescription);
+
+            Helper.agentPrintRegisteredDF(this, Protocol.SERVICE_BANKER);
         } catch (FIPAException e1) {
             e1.printStackTrace();
         }
-        account = new HashMap<>();
-        account.put("Customer-A", 1000L);
-        account.put("Customer-B", 10L);
-        account.put("Customer-C",5L);
 
         addBehaviour(new AcceptationBankTransactionBehaviour(this));
-
     }
 
     @Override
@@ -44,6 +52,7 @@ public class BankerAgent extends Agent {
             e.printStackTrace();
         }
 
+        Helper.agentPrintStopped(this);
     }
 
     public Map<String, Long> getAccount(){
